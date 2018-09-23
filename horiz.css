@@ -1,0 +1,316 @@
+
+html {
+  height: 100%;
+  overflow-y: hidden;
+  overflow-x: hidden;
+}
+
+body { 
+  position: absolute;  
+  margin: 0;
+  padding: 0;
+	  perspective: 100px;
+  perspective-origin: 4000px 500px;
+	  transform-style: preserve-3d;
+  height: 100%;
+  width: 100%;
+  overflow-y: hidden;
+  overflow-x: scroll;
+  font-family: oldnewspapertypes;
+  font-size: 72px;
+  background-image: url("images/wars.jpg");
+}
+ 
+
+
+/* Fonts */
+
+      
+@font-face { 
+    font-family: moms_typewriter; src: url('fonts/moms_typewriter/Mom«t___.ttf'); 
+}
+
+@font-face { 
+    font-family: oldnewspapertypes; src: url('fonts/oldnewspapertypes/OldNewspaperTypes.ttf')
+} 
+
+
+
+h1 {
+    color: black;
+    font-family: moms_typewriter;
+    font-size: .7em;
+}
+
+
+h2 {
+    color: antiquewhite;
+    font-family: 'Roboto';
+    font-size: 1em;
+}
+
+
+h3 {
+    color: black;
+    font-family: oldnewspapertypes;
+    font-size: .6em;
+}
+
+
+h4 {
+    color: antiquewhite;
+    font-family: 'Nothing You Could Do', cursive;
+    font-size: .5em;
+}
+
+
+
+/* Menu */
+
+
+#heading {
+    font-family: oldnewspapertypes;
+    font-size: 1em; 
+    color: #333333; 
+    letter-spacing: .10em;
+    float: left;
+    padding: 0px 0px 0px 90px  
+}
+
+
+
+.centered {
+    position: sticky;
+    top: 0%;
+    left: 35.5%;
+    font-family: oldnewspapertypes;   
+}
+
+.left {    
+    position: absolute;
+    font-family: oldnewspapertypes;
+    top: 50%;
+    left: 5%;
+    transform: translate(-50%, -50%);
+}
+
+
+.header {
+    position: sticky;
+    font-family: moms_typewriter;
+    font-size: 0.5em;
+    padding: 5px 50px;
+    border-bottom: solid black 1px;
+   
+}
+
+
+.footer {
+    position: sticky;
+    left: 0%;
+    top: 80%;  
+}
+
+
+
+
+/* List Styling */
+
+
+ul, ol {
+    list-style-type: none;
+    display: inline; 
+    margin: 5px;
+    padding: 5px;     
+}
+   
+  
+li {
+    margin: 10px;
+    padding: 10px;
+    display: inline;
+}
+ 
+
+
+a  {
+    text-decoration: none;   
+}
+
+
+a:visited {
+    color: inherit;
+}
+
+
+a:hover {
+    color: #88001b; 
+    transition: 0.3s;
+} 
+
+
+
+/* Buttons */
+
+#circle-button {
+    position: absolute;
+    border-radius: 50%;
+    bottom: 20px;
+    height: 55px;
+    width: 55px;
+    font-size: 30px;
+    right: 20px;
+    background-color: maroon;
+    color: white;
+    cursor: pointer;
+}
+
+button:focus {
+    outline:0;
+}
+
+#buttons {
+    display: none;
+    position: absolute;
+    bottom: 30px;
+    right: 100px;
+    width: 300px;
+    cursor: pointer;
+}
+
+
+
+
+
+
+/* Timeline */
+
+
+.timeline-texture {
+   
+    position: absolute;
+    top: 48%;
+    left: 50%;
+    width: 100%;
+    height: 7%;
+    background-color: antiquewhite;
+    opacity: 0.3;
+    transform: translate(-50%, -50%);    
+}
+
+
+
+
+.timeline {
+  position: relative;
+  left: 0;
+  top: 0;
+  width: 12000px;
+  height: 95%;
+  font-family: moms_typewriter; 
+  transform-style: inherit;
+  transform: translateZ(0px);
+  z-index: 0;
+  background-image: ;
+ 
+  background-size: 100% / cover;
+}
+
+
+
+
+.float {
+  position: absolute;
+  display: inline-block;
+  transform-style: inherit;
+  text-shadow: 5px 10px 20px #000;
+}
+
+
+.depth1 {
+  transform: translateZ(1px);
+  z-index: 1;
+}
+
+
+
+.depth10 {
+  font-family: oldnewspapertypes;
+  transform: translateZ(10px);
+  z-index: 10;
+  color: #333333;
+}
+
+
+
+.depth20 {
+  transform: translateZ(20px);
+  z-index: 20;
+  
+}
+
+
+
+
+
+
+
+
+/* Telegram Animations */
+
+
+#telegram {
+  font-family: oldnewspapertypes;
+  font-size: .3em;  
+  color: black;  
+  overflow: hidden;
+  white-space: nowrap; 
+  margin: 0 auto; 
+  letter-spacing: .15em;
+  text-shadow: none;
+  float:left;
+}
+
+
+#title {
+  font-family: oldnewspapertypes;
+  font-size: 1em;  
+  color: #333333;  
+  overflow: hidden;
+  white-space: nowrap; 
+  margin: 0 auto; 
+  letter-spacing: .15em;
+  text-shadow: none;
+  float:left;
+  animation: 
+    typing 30s steps(200, end),
+    curser .60s step-end infinite;
+}
+
+
+
+@keyframes typing {
+  from { width: 0 }
+  to { width: 100% }
+}
+
+
+
+/* Modal Styling */
+
+
+#myImg {
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+#myImg:hover {opacity: 0.7;}
+
+
+
+
+
+
+
+
