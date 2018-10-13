@@ -69,21 +69,8 @@
 
 		<!-- Image Divs -->
 		<div id="timelineItems">
-			<div class="float depth10 timeline__content" style="left: 23%; top: 10%; background-image: url(images/letter.jpg)">
-				<span> hey mate </span>
-				<span> hey mate </span>
-				<span> hey mate </span>
-			</div>
 
-			<div class="float depth10" style="left: 24.5%; top: 52%;">
-				<img id="myImg" src="images/letter.png" alt="War Declared, 27th Jul 1914" style="width:100%;max-width:300px">
-			</div>
 
-			<div class="float depth10" style="left: 26%; top: 10%;">
-				<a name="1914">
-					<img id="myImg" src="images/event.png" alt="War Declared, 27th Jul 1914" style="width:100%;max-width:300px">
-				</a>
-			</div>
 		</div>
 	</div>
 
@@ -170,6 +157,7 @@
 		]
 
 		function init() {
+
 			let day, month, year;
 			/* content.sort(function(a, b) {
 				day = a.date.substring(0, 2);
@@ -192,7 +180,7 @@
 
 			});		*/
 
-			$("#timelineItems").empty();
+			//$("#timelineItems").empty();
 			$("#scrubber").empty();
 
 			let widthPercent = 23;
@@ -239,6 +227,7 @@
 				mTranscript.append('<p>' + content[index].transcript + '</p>');
 				modal.css("position", "sticky")
 			});
+
 		}
 
 
@@ -255,8 +244,12 @@
 		function addToList(index, value, width, height) {
 			let t = "<span>" + value.type + "</span>";
 			let span = "<span>'" + value.title + "'</span><span>Transcribed by " + value.username + "</span><span>" + value.date + "</span>";
+			if (index == 0) {
+				$("#timelineItems").append("<div id='I" + index + "' class='float depth10 timeline__content' style='left: " + width + "%; top: " + height + "%; background-image: url(" + value.img + ")'><a name='1914'></a></div>");
+			} else {
+				$("#timelineItems").append("<div id='I" + index + "' class='float depth10 timeline__content' style='left: " + width + "%; top: " + height + "%; background-image: url(" + value.img + ")'></div>");
+			}
 
-			$("#timelineItems").append("<div id='I" + index + "' class='float depth10 timeline__content' style='left: " + width + "%; top: " + height + "%; background-image: url(" + value.img + ")'></div>");
 			$("#I" + index).append(t);
 			$("#I" + index).append(span);
 		}
@@ -301,7 +294,10 @@
 			buttonsShow = !buttonsShow;
 		});
 
-		closeButton.click(toggleModal);  
+		closeButton.click(toggleModal);
+
+
+
 	</script>
 </body>
 
