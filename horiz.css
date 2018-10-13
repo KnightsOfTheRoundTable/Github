@@ -369,7 +369,30 @@ span {
         transition: visibility 0s linear 0s, opacity 0.25s 0s, transform 0.25s;
     }
 	
-
+    #scrubber {
+		
+		background-color:white;
+		top: 50%;
+       
+		width: 80%;
+		height:100px;
+		
+		position: sticky;
+        left: 35.5%;
+	}
+	.scrubberCol {
+		height: 100px;
+		width: 50px;
+		background-color: gray;
+		float: left
+	}
+	
+	.box {
+		float: left;
+		height: 25px;
+		width: 49px;
+		background-color: blue;
+	}
 
 
 
