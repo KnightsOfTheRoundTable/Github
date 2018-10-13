@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html>
 
@@ -14,12 +13,12 @@
 </head>
 
 <body>
-    
+
     <!-- Header -->
-                                
-    <div class="header" style="left: 0%; top: 0%;"> 
-        <a href="#home"><img  src="images/home.png" class="left"></a> 
-        <div id="heading">WW1</div>
+
+    <div class="header" style="left: 0%; top: 0%;">
+        <a href="#home"><img src="images/home.png" class="left"></a>
+        <!-- <div id="heading">WW1</div> -->
         <ul class="centered">
             <li><a href="#1914">1914</a></li>
             <li><a href="#1915">1915</a></li>
@@ -28,93 +27,103 @@
             <li><a href="#1918">1918</a></li>
         </ul>
         <a href="#account"><img src="images/account.png" style="float: right;"></a>
-    </div>  
-    
+    </div>
+
+    <!-- Filter buttons -->
+    <div id="buttons">
+        <button class="filter-buttons" onclick="addToList()">Story</button>
+        <button class="filter-buttons">Photo</button>
+        <button class="filter-buttons">Transcribe</button>
+    </div>
+
     <!-- Timeline -->
 
     <div class="timeline">
-       <div class="timeline-texture"> </div>
-       <div id="title" class="float depth10" style="left: 7%; top: 41%;">
-           <a name="home">
-               <h1>Letters From The Front.</h1>
-           </a>
-        </div>    
-       <div class="float depth10" style="left: 21%; top: 42.5%;">1914</div> 
-       <div class="float depth20" style="left: 18.5%; top: 43.5%;">
-           <a href="#1914">
-               <img  src="images/arrow-forward.png">
-           </a>
+        <div class="timeline-texture"> </div>
+        <div id="title" class="float depth10" style="left: 7%; top: 41%;">
+            <a name="home">
+                <h1>Letters From The Front.</h1>
+            </a>
         </div>
-   
-       <div id="telegram" class="float depth20" style="left: 27%; top: 46.5%;">Jun 26th, Archduke Franz Ferdenand assassinated!</div>
-       <div id="telegram" class="float depth20" style="left: 35%; top: 46.5%;">Aug 4th, German troops invade Poland. </div> 
-       <div id="telegram" class="float depth20" style="left: 45%; top: 46.5%;">Sep 23rd, Allied forces join the Western Front.</div>
-    
-       <div class="float depth10" style="left: 34%; top: 52%;">  
-           <img id="myImg" src="images/lindsay.jpg" alt="War Declared, 27th Jul 1914" style="width:100%;max-width:300px">
-       </div> 
-   
-       <div class="float depth10" style="left: 28%; top: 52%;"> 
-           <a name="1914"> 
-               <img id="myImg" src="images/event.png" alt="War Declared, 27th Jul 1914" style="width:100%;max-width:300px">
-           </a>
-       </div> 
-    
-       <div class="float depth10" style="left: 23%; top: 10%;">
-          <img id="myImg" src="images/propaganda.png" alt="War Declared, 27th Jul 1914" style="width:100%;max-width:300px">
-       </div>
-    
-       <div class="float depth10" style="left: 26.5%; top: 10%;">
-          <img id="myImg" src="images/letter.png" alt="War Declared, 27th Jul 1914" style="width:100%;max-width:300px">
-       </div>
-    
-       <div class="float depth10" style="left: 39%; top: 52%;"> 
-           <img id="myImg" src="images/photo.png" alt="War Declared, 27th Jul 1914" style="width:100%;max-width:300px">
-       </div>
-    
-       <div class="float depth10" style="left: 36.5%; top: 10%;">
-           <img id="myImg" src="images/propaganda.png" alt="War Declared, 27th Jul 1914" style="width:100%;max-width:300px">
-       </div>
-    
-       <div class="float depth10" style="left: 45%; top: 52%;">
-          <img id="myImg" src="images/event.png" alt="War Declared, 27th Jul 1914" style="width:100%;max-width:300px">
-        </div> 
-    
-       <div class="float depth10" style="left: 50%; top: 52%;"> 
-           <img id="myImg" src="images/event.png" alt="War Declared, 27th Jul 1914" style="width:100%;max-width:300px">
-       </div>   
-    
-       <div class="float depth10" style="left: 33.5%; top: 10%;">
-           <img id="myImg" src="images/letter.png" alt="War Declared, 27th Jul 1914" style="width:100%;max-width:300px">
-       </div>
-    
-       <div class="float depth10" style="left: 53.5%; top: 10%;">
-           <img id="myImg" src="images/letter.jpg" alt="War Declared, 27th Jul 1914" style="width:100%;max-width:300px">
-       </div>
-    
-       <div class="float depth10" style="left: 43.5%; top: 10%;">
-           <img id="myImg" src="images/photo.png" alt="War Declared, 27th Jul 1914" style="width:100%;max-width:300px">
-      </div>
-    
-      <div  class="float depth10" style="left: 90%; top: 42.5%;">
-          <a name="1915">1915</a>
-      </div>
-  </div>
-  
-   
-   <!-- Button -->
-    
-    
-  <div class="footer">
-     <button id="circle-button" onclick="onButtonClick()">+</button>
-                <div id="buttons">
-                    <button class="circle-button-buttons" onclick="addToList()">Story</button>
-                    <button class="circle-button-buttons">Photo</button>
-                    <button class="circle-button-buttons">Transcribe</button>
-                </div>
-  </div>
-    
-        
+        <div class="float depth10" style="left: 21%; top: 42.5%;">1914</div>
+        <div class="float depth20" style="left: 18.5%; top: 43.5%;">
+            <a href="#1914">
+                <img src="images/arrow-forward.png">
+            </a>
+        </div>
+
+        <div id="telegram" class="float depth20" style="left: 27%; top: 46.5%;">Jun 26th, Archduke Franz Ferdenand assassinated!</div>
+        <div id="telegram" class="float depth20" style="left: 35%; top: 46.5%;">Aug 4th, German troops invade Poland.
+        </div>
+        <div id="telegram" class="float depth20" style="left: 45%; top: 46.5%;">Sep 23rd, Allied forces join the Western
+            Front.
+        </div>
+
+        <div class="float depth10" style="left: 34%; top: 52%;">
+            <img id="myImg" src="images/lindsay.jpg" alt="War Declared, 27th Jul 1914" style="width:100%;max-width:300px">
+        </div>
+
+        <div class="float depth10" style="left: 28%; top: 52%;">
+            <a name="1914">
+                <img id="myImg" src="images/event.png" alt="War Declared, 27th Jul 1914" style="width:100%;max-width:300px">
+            </a>
+        </div>
+
+        <div class="float depth10" style="left: 23%; top: 10%;">
+            <img id="myImg" src="images/propaganda.png" alt="War Declared, 27th Jul 1914" style="width:100%;max-width:300px">
+        </div>
+
+        <div class="float depth10" style="left: 26.5%; top: 10%;">
+            <img id="myImg" src="images/letter.png" alt="War Declared, 27th Jul 1914" style="width:100%;max-width:300px">
+        </div>
+
+        <div class="float depth10" style="left: 39%; top: 52%;">
+            <img id="myImg" src="images/photo.png" alt="War Declared, 27th Jul 1914" style="width:100%;max-width:300px">
+        </div>
+
+        <div class="float depth10" style="left: 36.5%; top: 10%;">
+            <img id="myImg" src="images/propaganda.png" alt="War Declared, 27th Jul 1914" style="width:100%;max-width:300px">
+        </div>
+
+        <div class="float depth10" style="left: 45%; top: 52%;">
+            <img id="myImg" src="images/event.png" alt="War Declared, 27th Jul 1914" style="width:100%;max-width:300px">
+        </div>
+
+        <div class="float depth10" style="left: 50%; top: 52%;">
+            <img id="myImg" src="images/event.png" alt="War Declared, 27th Jul 1914" style="width:100%;max-width:300px">
+        </div>
+
+        <div class="float depth10" style="left: 33.5%; top: 10%;">
+            <img id="myImg" src="images/letter.png" alt="War Declared, 27th Jul 1914" style="width:100%;max-width:300px">
+        </div>
+
+        <div class="float depth10" style="left: 53.5%; top: 10%;">
+            <img id="myImg" src="images/letter.jpg" alt="War Declared, 27th Jul 1914" style="width:100%;max-width:300px">
+        </div>
+
+        <div class="float depth10" style="left: 43.5%; top: 10%;">
+            <img id="myImg" src="images/photo.png" alt="War Declared, 27th Jul 1914" style="width:100%;max-width:300px">
+        </div>
+
+        <div class="float depth10" style="left: 90%; top: 42.5%;">
+            <a name="1915">1915</a>
+        </div>
+    </div>
+
+
+    <!-- Button -->
+
+
+    <div class="footer">
+        <button id="circle-button" onclick="onButtonClick()">+</button>
+        <div id="buttons">
+            <button class="circle-button-buttons" onclick="addToList()">Story</button>
+            <button class="circle-button-buttons">Photo</button>
+            <button class="circle-button-buttons">Transcribe</button>
+        </div>
+    </div>
+
+
 </body>
-    
-</html>    
+
+</html>
