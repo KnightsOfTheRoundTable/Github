@@ -1,105 +1,107 @@
-
 <!DOCTYPE html>
 <html>
 
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Letters From the Front</title>
-    <meta name="description" content="World War One Interactive Timeline">
-    <link rel="stylesheet" href="horiz.css">
-    <link href="https://fonts.googleapis.com/css?family=Roboto:100" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Nothing+You+Could+Do" rel="stylesheet">
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Letters From the Front</title>
+	<meta name="description" content="World War One Interactive Timeline">
+	<link rel="stylesheet" href="horiz.css">
+	<link href="https://fonts.googleapis.com/css?family=Roboto:100" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Nothing+You+Could+Do" rel="stylesheet">
+
 
 </head>
 
 <body>
-    <div class="modal">
-        <div class="modal-content">
-            <span class="close-button">&times;</span>
+	<div class="modal">
+		<div class="modal-content">
+			<span class="close-button">&times;</span>
 			<div id="modalHeader"></div>
 			<div id="modalData">
 				<div id="modalImage"></div>
 				<div id="modalTranscript"></div>
 			</div>
-        </div>
-    </div>
-	
-    <!-- Header -->
-    <div class="header" style="left: 0%; top: 0%;"> 
-        <a href="#home"><img  src="images/home.png" class="left"></a> 
-        <div id="heading">WW1</div>
-        <ul class="centered">
-            <li><a href="#1914">1914</a></li>
-            <li><a href="#1915">1915</a></li>
-            <li><a href="#1916">1916</a></li>
-            <li><a href="#1917">1917</a></li>
-            <li><a href="#1918">1918</a></li>
-        </ul>
-        <a href="#account"><img src="images/account.png" style="float: right;"></a>
-		<div id="scrubber"><div class="scrubberCol"> </div></div>
-    </div>  
-    
-    <!-- Timeline -->
+		</div>
+	</div>
 
-    <div class="timeline">
-       <div class="timeline-texture"> </div>
-       <div id="title" class="float depth10" style="left: 7%; top: 41%;">
-           <a name="home">
-               <h1>Letters From The Front.</h1>
-           </a>
-        </div> 
-        
-        <div class="float depth20" style="left: 18.5%; top: 43.5%;">
-           <a href="#1914">
-               <img  src="images/arrow-forward.png">
-           </a>
-        </div>
-       <div class="float depth10" style="left: 21%; top: 42.5%;">1914</div> 
-   
-   
-       <div id="telegram" class="float depth20" style="left: 27%; top: 46.5%;">Jun 26th, Archduke Franz Ferdenand assassinated!</div>
-       <div id="telegram" class="float depth20" style="left: 35%; top: 46.5%;">Aug 4th, German troops invade Poland. </div> 
-       <div id="telegram" class="float depth20" style="left: 45%; top: 46.5%;">Sep 23rd, Allied forces join the Western Front.</div>
-	   
-    
-    
-   
-     <!-- Image Divs -->
+	<!-- Header -->
+	<div class="header" style="left: 0%; top: 0%;">
+		<a href="#home"><img src="images/home.png" class="left"></a>
+		<div id="heading">WW1</div>
+		<ul class="centered">
+			<li><a href="#1914">1914</a></li>
+			<li><a href="#1915">1915</a></li>
+			<li><a href="#1916">1916</a></li>
+			<li><a href="#1917">1917</a></li>
+			<li><a href="#1918">1918</a></li>
+		</ul>
+		<a href="#account"><img src="images/account.png" style="float: right;"></a>
+		<div id="scrubber">
+			<div class="scrubberCol"> </div>
+		</div>
+	</div>
+
+	<!-- Timeline -->
+
+	<div class="timeline">
+		<div class="timeline-texture"> </div>
+		<div id="title" class="float depth10" style="left: 7%; top: 41%;">
+			<a name="home">
+				<h1>Letters From The Front.</h1>
+			</a>
+		</div>
+
+		<div class="float depth20" style="left: 18.5%; top: 43.5%;">
+			<a href="#1914">
+				<img src="images/arrow-forward.png">
+			</a>
+		</div>
+		<div class="float depth10" style="left: 21%; top: 42.5%;">1914</div>
+
+
+		<div class="float depth20 telegram" style="left: 27%; top: 46.5%;">Jun 26th, Archduke Franz Ferdenand assassinated!</div>
+		<div class="float depth20 telegram" style="left: 35%; top: 46.5%;">Aug 4th, German troops invade Poland. </div>
+		<div class="float depth20 telegram" style="left: 45%; top: 46.5%;">Sep 23rd, Allied forces join the Western Front.</div>
+
+
+
+
+		<!-- Image Divs -->
 		<div id="timelineItems">
 			<div class="float depth10 timeline__content" style="left: 23%; top: 10%; background-image: url(images/letter.jpg)">
 				<span> hey mate </span>
 				<span> hey mate </span>
 				<span> hey mate </span>
 			</div>
-    
+
 			<div class="float depth10" style="left: 24.5%; top: 52%;">
 				<img id="myImg" src="images/letter.png" alt="War Declared, 27th Jul 1914" style="width:100%;max-width:300px">
 			</div>
-        
-			<div class="float depth10" style="left: 26%; top: 10%;"> 
-				<a name="1914"> 
+
+			<div class="float depth10" style="left: 26%; top: 10%;">
+				<a name="1914">
 					<img id="myImg" src="images/event.png" alt="War Declared, 27th Jul 1914" style="width:100%;max-width:300px">
 				</a>
-			</div> 
-	   </div>
-  </div>
-  
-   <!-- Button -->
-    <div class="footer">
+			</div>
+		</div>
+	</div>
+
+	<!-- Button -->
+	<div class="footer">
 		<button id="circle-button">+</button>
 		<div id="buttons">
-			<button id ="addStory" class="circle-button-buttons">Story</button>
+			<button id="addStory" class="circle-button-buttons">Story</button>
 			<button class="circle-button-buttons">Photo</button>
-            <button id ="addTranscript" class="circle-button-buttons">Transcribe</button>
-        </div>
-	</div>   
-	
-	
-	<script src = "https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="timeline/js/timeline.min.js"></script>
+			<button id="addTranscript" class="circle-button-buttons">Transcribe</button>
+		</div>
+	</div>
+
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script src="timeline/js/timeline.min.js"></script>
 	<script type="text/javascript">
-        var buttonsShow = false;
+		var buttonsShow = false;
 		var modal = $(".modal");
 		var mHeader = $("#modalHeader");
 		var mData = $("#modalData");
@@ -107,67 +109,67 @@
 
 		var closeButton = $(".close-button");
 		var images = [
-            "war.jpg",
-            "night.jpg",
-            "planes.jpg",
-            "trees.jpg",
-            "walk.jpg",
-            "warbombs.jpg"
-        ];
+			"war.jpg",
+			"night.jpg",
+			"planes.jpg",
+			"trees.jpg",
+			"walk.jpg",
+			"warbombs.jpg"
+		];
 		var filters = ['event', 'photo', 'story', 'letter', 'propaganda', 'newspaper', 'other'];
-		
+
 		let content = [
-            { 
-			username: "Dave",
-			img: "images/letter.png",
-			type: "event",
-			date: "27/07/1914",
-			title: "war declared",
-			transcript: "blah blah blah"
+			{
+				username: "Dave",
+				img: "images/letter.png",
+				type: "event",
+				date: "27/07/1914",
+				title: "war declared",
+				transcript: "blah blah blah"
 			},
-			{ 
-			username: "carol",
-			img: "images/letter.png",
-			type: "letter",
-			date: "27/07/1913",
-			title: "war declared",
-			transcript: "blah blah blah"
+			{
+				username: "carol",
+				img: "images/letter.png",
+				type: "letter",
+				date: "27/07/1913",
+				title: "war declared",
+				transcript: "blah blah blah"
 			},
-			{ 
-			username: "kerry",
-			img: "images/letter.jpg",
-			type: "propaganda",
-			date: "27/08/1914",
-			title: "war declared",
-			transcript: "blah blah blah"
-			}, 
-			{ 
-			username: "kerry",
-			img: "images/letter.png",
-			type: "letter",
-			date: "27/08/1914",
-			title: "war declared",
-			transcript: "blah blah blah"
+			{
+				username: "kerry",
+				img: "images/letter.jpg",
+				type: "propaganda",
+				date: "27/08/1914",
+				title: "war declared",
+				transcript: "blah blah blah"
 			},
-			 { 
-			username: "Dave",
-			img: "images/letter.png",
-			type: "event",
-			date: "27/07/1914",
-			title: "war declared",
-			transcript: "blah blah blah"
+			{
+				username: "kerry",
+				img: "images/letter.png",
+				type: "letter",
+				date: "27/08/1914",
+				title: "war declared",
+				transcript: "blah blah blah"
 			},
-			{ 
-			username: "carol",
-			img: "images/letter.png",
-			type: "letter",
-			date: "27/07/1913",
-			title: "war declared",
-			transcript: "blah blah blah"
+			{
+				username: "Dave",
+				img: "images/letter.png",
+				type: "event",
+				date: "27/07/1914",
+				title: "war declared",
+				transcript: "blah blah blah"
+			},
+			{
+				username: "carol",
+				img: "images/letter.png",
+				type: "letter",
+				date: "27/07/1913",
+				title: "war declared",
+				transcript: "blah blah blah"
 			}
-        ]
-		
-		function init(){
+		]
+
+		function init() {
 			let day, month, year;
 			/* content.sort(function(a, b) {
 				day = a.date.substring(0, 2);
@@ -189,58 +191,58 @@
 				}
 
 			});		*/
-			
+
 			$("#timelineItems").empty();
 			$("#scrubber").empty();
-			
+
 			let widthPercent = 23;
 			let heightPercent;
 			let color = "";
 			let colNum = 0;
 
-			$.each(content, function( index, value ) {
-				if (index%2 == 0){
+			$.each(content, function (index, value) {
+				if (index % 2 == 0) {
 					heightPercent = 52;
 				} else {
 					heightPercent = 10;
 				}
-				
+
 				if (index % 4 == 0) {
 					colNum++;
-					$("#scrubber").append('<div id="sc'+colNum +'" class="scrubberCol">');
-					
+					$("#scrubber").append('<div id="sc' + colNum + '" class="scrubberCol">');
+
 				}
-				
-				if (value.type == 'event'){
+
+				if (value.type == 'event') {
 					color = "blue";
-				} else if (value.type == 'letter'){
+				} else if (value.type == 'letter') {
 					color = "yellow";
-				} else if (value.type == 'propaganda'){
+				} else if (value.type == 'propaganda') {
 					color = "red";
 				}
-				
-				$('#sc'+colNum).append('<div class="box" style="background-color:'+color +'"></div>');
-				
-				if($.inArray(value.type, filters) != -1){
-					
+
+				$('#sc' + colNum).append('<div class="box" style="background-color:' + color + '"></div>');
+
+				if ($.inArray(value.type, filters) != -1) {
+
 					addToList(index, value, widthPercent, heightPercent);
 				}
-				
+
 				widthPercent += 2.5;
 			});
-			
-			$(".timeline__content").click(function() {
+
+			$(".timeline__content").click(function () {
 				let index = this.id.substring(1);
 				toggleModal();
-				mHeader.append("'" +content[index].title + "' <br>transcribed by " + content[index].username);
-				$('#modalImage').append('<img width=400px src="'+content[this.id.substring(1)].img+'">');
+				mHeader.append("'" + content[index].title + "' <br>transcribed by " + content[index].username);
+				$('#modalImage').append('<img width=400px src="' + content[this.id.substring(1)].img + '">');
 				mTranscript.append('<p>' + content[index].transcript + '</p>');
 				modal.css("position", "sticky")
-			});	
+			});
 		}
-		
-		
-		
+
+
+
 		function toggleModal() {
 			modal.css("position", "fixed");
 			modal.toggleClass("show-modal");
@@ -248,58 +250,59 @@
 			$('#modalImage').empty();
 			$('#modalTranscript').empty();
 		}
-		
-		
-		function addToList(index, value, width, height) {			
-			let t = "<span>"+value.type+"</span>";
-            let span = "<span>'"+value.title+"'</span><span>Transcribed by "+value.username+"</span><span>"+value.date+"</span>";
-		
-			$("#timelineItems").append("<div id='I"+index+"' class='float depth10 timeline__content' style='left: "+width+ "%; top: "+height+"%; background-image: url(" + value.img +")'></div>");
-			$("#I"+ index).append(t);
-			$("#I"+ index).append(span);
-        }
-		
-		$("#addStory").click(function (){
-            toggleModal();
+
+
+		function addToList(index, value, width, height) {
+			let t = "<span>" + value.type + "</span>";
+			let span = "<span>'" + value.title + "'</span><span>Transcribed by " + value.username + "</span><span>" + value.date + "</span>";
+
+			$("#timelineItems").append("<div id='I" + index + "' class='float depth10 timeline__content' style='left: " + width + "%; top: " + height + "%; background-image: url(" + value.img + ")'></div>");
+			$("#I" + index).append(t);
+			$("#I" + index).append(span);
+		}
+
+		$("#addStory").click(function () {
+			toggleModal();
 			mHeader.append("Add story");
 			$('#modalImage').append('<p>Soldier search<input type="text"></p><p>Private John Anthony Hopkins</p><img width=100px src="./images/family.png">');
 			mTranscript.append('<textarea id="ta" rows="4" cols="50"></textarea><button id="submit">Submit</button>');
-			$("#submit").click(function() {
-				let obj = {username: "Karen",img: "./images/family.png",type: "story",date: "2/10/1916",title: "story", transcript: $("#ta").val()};
+			$("#submit").click(function () {
+				let obj = { username: "Karen", img: "./images/family.png", type: "story", date: "2/10/1916", title: "story", transcript: $("#ta").val() };
 				content.push(obj);
 				toggleModal();
 				init();
 			});
-        });
-		
-		$("#addTranscript").click(function (){
-            toggleModal();
+		});
+
+		$("#addTranscript").click(function () {
+			toggleModal();
 			mHeader.append("Transcribe document");
 			$('#modalImage').append('<img width=400px src="./images/newspaper.png">');
 			mTranscript.append('<textarea id="ha" rows="1" cols="50"></textarea><textarea id="ta" rows="4" cols="50"></textarea><button id="submit">Submit</button>');
-			$("#submit").click(function() {
-				let obj = {username: "Karen",img: "./images/newspaper.png",type: "newspaper",date: "2/10/1916",title: $("#ha").val(), transcript: $("#ta").val()};
+			$("#submit").click(function () {
+				let obj = { username: "Karen", img: "./images/newspaper.png", type: "newspaper", date: "2/10/1916", title: $("#ha").val(), transcript: $("#ta").val() };
 				content.push(obj);
 				toggleModal();
 				init();
 			});
-        });
-		
-		
+		});
+
+
 		init();
 
-        $("#circle-button").click(function() {
-            var buttons = $("#buttons");
-			
-            if (buttonsShow == true) {
+		$("#circle-button").click(function () {
+			var buttons = $("#buttons");
+
+			if (buttonsShow == true) {
 				buttons.css('display', 'none');
-            } else {
+			} else {
 				buttons.css('display', 'block');
-            }
-            buttonsShow = !buttonsShow;
-        });
-		
+			}
+			buttonsShow = !buttonsShow;
+		});
+
 		closeButton.click(toggleModal);  
-    </script>
+	</script>
 </body>
-</html>    
+
+</html>
