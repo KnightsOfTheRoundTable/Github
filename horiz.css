@@ -32,8 +32,6 @@ body {
     font-family: oldnewspapertypes; src: url('fonts/oldnewspapertypes/OldNewspaperTypes.ttf')
 } 
 
-
-
 h1 {
     color: white;
     font-family: moms_typewriter;
@@ -75,12 +73,20 @@ h4 {
     padding: 0px 0px 0px 90px  
 }
 
-
-
 .centered {
     position: sticky;
-    top: 0%;
-    left: 35.5%;
+    display: flex;
+    color: #fff;
+    justify-content: space-evenly;
+    align-items: center;
+    font-family: oldnewspapertypes;   
+}
+
+.filter-bar{
+    position: sticky;
+    font-size: 0.7em;
+    height: 70px;
+    width: 100%;
     font-family: oldnewspapertypes;   
 }
 
@@ -92,15 +98,29 @@ h4 {
     transform: translate(-50%, -50%);
 }
 
+.top-header {
+    position: sticky;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    height: 50px;
+    align-items: center;
+    padding-bottom: 10px;
+    font-family: moms_typewriter;
+    border-bottom: solid white 1px;
+}
 
 .header {
     position: sticky;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
     font-family: moms_typewriter;
     font-size: 0.5em;
     padding: 10px 50px 10px;
-    border-bottom: solid white 1px;
-   
 }
+
 
 .footer {
     position: sticky;
@@ -397,7 +417,52 @@ span {
 		background-color: blue;
 	}
 
-
+    input[type=checkbox] + label {
+        display: block;
+        margin: 0.2em;
+        cursor: pointer;
+        padding: 0.2em;
+      }
+      
+      input[type=checkbox] {
+        display: none;
+      }
+      
+      input[type=checkbox] + label:before {
+        content: "\2714";
+        border: 0.1em solid #fff;
+        border-radius: 0.2em;
+        display: inline-block;
+        width: 1em;
+        height: 1em;
+        padding-left: 0.2em;
+        padding-bottom: 0.3em;
+        margin-right: 0.2em;
+        vertical-align: bottom;
+        color: transparent;
+        transition: .2s;
+      }
+      
+      input[type=checkbox] + label:active:before {
+        transform: scale(0);
+      }
+      
+      input[type=checkbox]:checked + label:before {
+        background-color: MediumSeaGreen;
+        border-color: MediumSeaGreen;
+        color: #fff;
+      }
+      
+      input[type=checkbox]:disabled + label:before {
+        transform: scale(1);
+        border-color: #aaa;
+      }
+      
+      input[type=checkbox]:checked:disabled + label:before {
+        transform: scale(1);
+        background-color: #bfb;
+        border-color: #bfb;
+      }
 
 
 
