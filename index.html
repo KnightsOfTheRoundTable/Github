@@ -39,12 +39,24 @@
 		</div>
 		<div class="filter-bar">
 			<div class="centered">
-				<input type="checkbox" id="photos" name="photos" value="photos">
+				<input class="check"  id="photos" type="checkbox" name="photos" value="photos" checked="true">
 				<label for="photos">Photos</label>
-				<input type="checkbox" id="stories" name="stories" value="stories">
+				<input class="check" id="stories" type="checkbox" name="stories" value="stories" checked="true">
 				<label for="stories">Stories</label>
-				<input type="checkbox" id="events" name="events" value="events">
+				<input class="check" id="events" type="checkbox"name="events" value="events" checked="true">
 				<label for="events">Events</label>
+				
+				<input class="check" id="letters" type="checkbox"  name="letters" value="letters" checked="true">
+				<label for="letters">Letters</label>
+				
+				<input class="check" id="propaganda"type="checkbox"  name="propaganda" value="propaganda" checked="true">
+				<label for="propaganda">Stories</label>
+				
+				<input class="check" id="newspapers" type="checkbox" name="newspapers" value="newspapers" checked="true">
+				<label for="newspapers">Newspapers</label>
+				
+				<input class="check" id="other" type="checkbox" name="other" value="other" checked="true">
+				<label for="other">other</label>
 			</div>
 		</div>
 		<div id="scrubber">
@@ -113,13 +125,13 @@
 			"walk.jpg",
 			"warbombs.jpg"
 		];
-		var filters = ['event', 'photo', 'story', 'letter', 'propaganda', 'newspaper', 'other'];
+		var filters = ['events', 'photos', 'stories', 'letters', 'propaganda', 'newspapers', 'other'];
 
 		let content = [
 			{
 				username: "Dave",
 				img: "images/letter.png",
-				type: "event",
+				type: "events",
 				date: "27/07/1914",
 				title: "war declared",
 				transcript: "blah blah blah"
@@ -127,7 +139,7 @@
 			{
 				username: "carol",
 				img: "images/letter.png",
-				type: "letter",
+				type: "letters",
 				date: "27/07/1913",
 				title: "war declared",
 				transcript: "blah blah blah"
@@ -143,7 +155,7 @@
 			{
 				username: "kerry",
 				img: "images/letter.png",
-				type: "letter",
+				type: "letters",
 				date: "27/08/1914",
 				title: "war declared",
 				transcript: "blah blah blah"
@@ -151,7 +163,7 @@
 			{
 				username: "Dave",
 				img: "images/letter.png",
-				type: "event",
+				type: "events",
 				date: "27/07/1914",
 				title: "war declared",
 				transcript: "blah blah blah"
@@ -159,7 +171,7 @@
 			{
 				username: "carol",
 				img: "images/letter.png",
-				type: "letter",
+				type: "letters",
 				date: "27/07/1913",
 				title: "war declared",
 				transcript: "blah blah blah"
@@ -190,19 +202,27 @@
 
 			});		*/
 
-			//$("#timelineItems").empty();
+			$("#timelineItems").empty();
 			$("#scrubber").empty();
 
 			let widthPercent = 23;
 			let heightPercent;
 			let color = "";
 			let colNum = 0;
+			
+			
 
 			$.each(content, function (index, value) {
+			
+				
 				if (index % 2 == 0) {
 					heightPercent = 52;
 				} else {
 					heightPercent = 10;
+				}
+				
+				if ($.inArray(value.type, filters) != -1) {
+					addToList(index, value, widthPercent, heightPercent);
 				}
 
 				if (index % 4 == 0) {
@@ -211,9 +231,9 @@
 
 				}
 
-				if (value.type == 'event') {
+				if (value.type == 'events') {
 					color = "blue";
-				} else if (value.type == 'letter') {
+				} else if (value.type == 'letters') {
 					color = "yellow";
 				} else if (value.type == 'propaganda') {
 					color = "red";
@@ -221,10 +241,7 @@
 
 				$('#sc' + colNum).append('<div class="box" style="background-color:' + color + '"></div>');
 
-				if ($.inArray(value.type, filters) != -1) {
-
-					addToList(index, value, widthPercent, heightPercent);
-				}
+				
 
 				widthPercent += 2.5;
 			});
@@ -303,6 +320,19 @@
 			}
 			buttonsShow = !buttonsShow;
 		});
+		
+		$('.check').click(function() {
+		
+			let i = filters.indexOf(this.id);
+
+			if($.inArray(this.id, filters) != -1){
+				filters.splice(i, 1);
+			} else {
+				filters.push(this.id);
+			}			
+			alert(filters);
+			init();
+        });
 
 		closeButton.click(toggleModal);
 
