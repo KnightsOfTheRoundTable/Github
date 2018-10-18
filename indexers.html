@@ -252,9 +252,9 @@
 			let t = "<span>" + value.type + "</span>";
 			let span = "<span>'" + value.title + "'</span><span>Transcribed by " + value.username + "</span><span>" + value.date + "</span>";
 			if (index == 0) {
-				$("#timelineItems").append("<div id='I" + index + "' class='float depth10 timeline__content' style='left: " + width + "%; top: " + height + "%; background-image: url(" + value.img + ")'><a name='1914'></a></div>");
+				$("#timelineItems").append("<div id='I" + index + "' class='float depth20 timeline__content' style='left: " + width + "%; top: " + height + "%; background-image: url(" + value.img + ")'><a name='1914'></a></div>");
 			} else {
-				$("#timelineItems").append("<div id='I" + index + "' class='float depth10 timeline__content' style='left: " + width + "%; top: " + height + "%; background-image: url(" + value.img + ")'></div>");
+				$("#timelineItems").append("<div id='I" + index + "' class='float depth20 timeline__content' style='left: " + width + "%; top: " + height + "%; background-image: url(" + value.img + ")'></div>");
 			}
 			$("#I" + index).append(t);
 			$("#I" + index).append(span);
