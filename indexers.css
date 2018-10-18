@@ -238,7 +238,7 @@ button:focus {
   position: absolute;
   display: inline-block;
   transform-style: inherit;
-  text-shadow: 5px 10px 20px #000;
+  
 }
 
 
@@ -276,10 +276,10 @@ span {
 
 
 .timeline__content span {
-    padding-top: 10px;
-    padding-bottom: 10px;
+    padding-top: 20px;
+    padding-bottom: 20px;
     text-align: center;
-	 font-size: 20px;
+	 font-size: 14px;
 	 color: white;
 }
 
