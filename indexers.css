@@ -209,11 +209,13 @@ button:focus {
     top: 60%;
     left: 50%;
     width: 100%;
-    height: 100%;
+    height: 120%;
     background-color: #333;
     opacity: 0.3;
     transform: translate(-50%, -50%);    
 }
+
+
 
 
 
@@ -264,9 +266,9 @@ button:focus {
 }
 
 
-.depth28 {
-  transform: translateZ(28px);
-  z-index: 28;
+.depth25 {
+  transform: translateZ(25px);
+  z-index: 25;
   
 }
 
