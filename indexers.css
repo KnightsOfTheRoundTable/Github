@@ -55,7 +55,7 @@ h3 {
 h4 {
     color: antiquewhite;
     font-family: 'Nothing You Could Do', cursive;
-    font-size: .5em;
+    font-size: .4em;
 }
 
 
@@ -274,6 +274,19 @@ button:focus {
 
 
 
+.panel {
+  width: 500px;
+  height: 200px;
+  background-color: #333;
+  box-shadow: 0 10px 40px black; 
+  opacity: 0.7;
+  padding: 15px;
+}
+
+
+
+
+
 
 span {
 	width:300px;
@@ -308,7 +321,7 @@ span {
 
 .telegram {
   font-family: oldnewspapertypes;
-  font-size: .3em;  
+  font-size: .25em;  
   color: white;  
   overflow: hidden;
   white-space: nowrap; 
