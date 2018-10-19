@@ -13,7 +13,7 @@ body {
 	  transform-style: preserve-3d;
   height: 100%;
   width: 100%;
-  overflow-y: scroll;
+  overflow-y: hidden;
   overflow-x: scroll;
   font-family: oldnewspapertypes;
   font-size: 72px;
@@ -184,7 +184,7 @@ button:focus {
     display: none;
     position: absolute;
     bottom: 30px;
-    right: 100px;
+    right: 15px;
     width: 300px;
     cursor: pointer;
 }
@@ -264,13 +264,22 @@ button:focus {
 }
 
 
+.depth28 {
+  transform: translateZ(28px);
+  z-index: 28;
+  
+}
+
+
+
+
 span {
 	width:300px;
 }
 
 .timeline__content {
-	width: 200px;
-	height: 250px;
+	width: 250px;
+	height: 300px;
 	background-color: white;
 }
 
