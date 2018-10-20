@@ -133,7 +133,8 @@
 				type: "events",
 				date: "27/01/1914",
 				title: "war declared",
-				transcript: "blah blah blah"
+				transcript: "blah blah blah",
+				unlocked: false
 			},
 			{
 				username: "carol",
@@ -141,7 +142,8 @@
 				type: "stories",
 				date: "27/09/1914",
 				title: "war declared",
-				transcript: "blah blah blah"
+				transcript: "blah blah blah",
+				unlocked: false
 			},
 			{
 				username: "kerry",
@@ -149,7 +151,8 @@
 				type: "photos",
 				date: "27/05/1914",
 				title: "war declared",
-				transcript: "blah blah blah"
+				transcript: "blah blah blah",
+				unlocked: true
 			},
 			{
 				username: "kerry",
@@ -157,7 +160,8 @@
 				type: "letters",
 				date: "27/06/1914",
 				title: "war declared",
-				transcript: "blah blah blah"
+				transcript: "blah blah blah",
+				unlocked: true
 			},
 			{
 				username: "Dave",
@@ -165,7 +169,8 @@
 				type: "propaganda",
 				date: "27/08/1914",
 				title: "war declared",
-				transcript: "blah blah blah"
+				transcript: "blah blah blah",
+				unlocked: true
 			},
 			{
 				username: "carol",
@@ -173,7 +178,8 @@
 				type: "newspapers",
 				date: "22/08/1914",
 				title: "war declared",
-				transcript: "blah blah blah"
+				transcript: "blah blah blah",
+				unlocked: true
 			} ,
 			{
 				username: "kerry",
@@ -181,14 +187,16 @@
 				type: "other",
 				date: "26/09/1914",
 				title: "war declared",
-				transcript: "blah blah blah"
+				transcript: "blah blah blah",
+				unlocked: true
 			}, {
 				username: "Dave",
 				img: "images/letter.png",
 				type: "events",
 				date: "01/07/1915",
 				title: "war declared",
-				transcript: "blah blah blah"
+				transcript: "blah blah blah",
+				unlocked: true
 			},
 			{
 				username: "carol",
@@ -196,7 +204,8 @@
 				type: "stories",
 				date: "27/07/1915",
 				title: "war declared",
-				transcript: "blah blah blah"
+				transcript: "blah blah blah",
+				unlocked: true
 			},
 			{
 				username: "kerry",
@@ -204,7 +213,8 @@
 				type: "photos",
 				date: "27/08/1915",
 				title: "war declared",
-				transcript: "blah blah blah"
+				transcript: "blah blah blah",
+				unlocked: true
 			},
 			{
 				username: "kerry",
@@ -212,7 +222,8 @@
 				type: "letters",
 				date: "27/08/1915",
 				title: "war declared",
-				transcript: "blah blah blah"
+				transcript: "blah blah blah",
+				unlocked: true
 			},
 			{
 				username: "Dave",
@@ -220,7 +231,8 @@
 				type: "propaganda",
 				date: "27/07/1915",
 				title: "war declared",
-				transcript: "blah blah blah"
+				transcript: "blah blah blah",
+				unlocked: true
 			},
 			{
 				username: "carol",
@@ -228,7 +240,8 @@
 				type: "newspapers",
 				date: "27/07/1915",
 				title: "war declared",
-				transcript: "blah blah blah"
+				transcript: "blah blah blah",
+				unlocked: true
 			} ,
 			{
 				username: "kerry",
@@ -236,7 +249,8 @@
 				type: "other",
 				date: "27/08/1915",
 				title: "war declared",
-				transcript: "blah blah blah"
+				transcript: "blah blah blah",
+				unlocked: true
 			}
 		]
 
@@ -323,10 +337,27 @@
 			$(".timeline__content").click(function () {
 				let index = this.id.substring(1);
 				toggleModal();
-				mHeader.append("'" + content[index].title + "' <br>transcribed by " + content[index].username);
-				$('#modalImage').append('<img width=400px src="' + content[this.id.substring(1)].img + '">');
-				mTranscript.append('<p>' + content[index].transcript + '</p>');
-				modal.css("position", "sticky")
+				
+				if (content[index].unlocked == true) {
+					mHeader.append("'" + content[index].title + " " + content[index].unlocked + "' <br>transcribed by " + content[index].username);
+					$('#modalImage').append('<img width=400px src="' + content[this.id.substring(1)].img + '">');
+					mTranscript.append('<p>' + content[index].transcript + '</p>');
+				} else {
+					mHeader.append("Transcribe document");
+					$('#modalImage').append('<img width=400px src="' + content[this.id.substring(1)].img + '">');
+					mTranscript.append('<textarea id="ta" rows="4" cols="50"></textarea><button id="submit">Submit</button>');
+					$("#submit").click(function () {
+						let obj = { username: "Karen", img: "./images/newspaper.png", type: "newspaper", date: "2/10/1916", title: $("#ha").val(), transcript: $("#ta").val() };
+					content.push(obj);
+					
+					
+					content[index].transcript = $('#ta').val();
+					content[index].unlocked = true;
+					toggleModal();
+					init();
+				});
+				}
+				modal.css("position", "sticky");
 			});
 		}
 
@@ -340,9 +371,15 @@
 
 		function addToList(index, value, width, height) {
 			let t = "<span>" + value.type + "</span>";
-			let span = "<span>'" + value.title + "'</span><span>Transcribed by " + value.username + "</span><span>" + value.date + "</span>";
-			$("#timelineItems").append("<div id='I" + index + "' class='float depth10 timeline__content' style='left: " + width + "%; top: " + height +
+			let span = "<span>'" + value.title+"'</span><span>Transcribed by " + value.username + "</span><span>" + value.date + "</span>";
+			if (value.unlocked == true){
+				$("#timelineItems").append("<div id='I" + index + "' class='float depth10 timeline__content' style='left: " + width + "%; top: " + height +
 				"%; background-image: url(" + value.img + ")'><a name='"+index +"'></a></div>");
+			} else {
+			$("#timelineItems").append("<div id='I" + index + "' class='float depth10 timeline__content' style='left: " + width + "%; top: " + height +
+				"%;'><a name='"+index +"'></a></div>");
+			}
+			
 
 			$("#I" + index).append(t);
 			$("#I" + index).append(span);
