@@ -28,12 +28,12 @@
 		<div class="top-header">
 			<a href="#logo"><img src="images/Letters-logo-1.png"></a>
 			<!-- <div id="heading">WW1</div> -->
-			<ul class="centered">
-				<li class="year" id="1914"><a>1914</a></li>
-				<li class="year" id="1915"><a>1915</a></li>
-				<li class="year" id="1916"><a>1916</a></li>
-				<li class="year" id="1917"><a>1917</a></li>
-				<li class="year" id="1918"><a>1918</a></li>
+			<ul class="years centered">
+				<li class="year" unlocked=true contentNum=2 contentNumUnlocked=1 id="1914"><a>1914</a></li>
+				<li class="year" unlocked=false contentNum=2 contentNumUnlocked=0 id="1915"><a>1915</a></li>
+				<li class="year" unlocked=false contentNum=0 contentNumUnlocked=0 id="1916"><a>1916</a></li>
+				<li class="year" unlocked=false contentNum=0 contentNumUnlocked=0 id="1917"><a>1917</a></li>
+				<li class="year" unlocked=false contentNum=0 contentNumUnlocked=0 id="1918"><a>1918</a></li>
 			</ul>
 			<a href="#account"><img src="images/account.png"></a>
 		</div>
@@ -113,6 +113,7 @@
 		var mData = $("#modalData");
 		var mTranscript = $("#modalTranscript");
 		var contentYear = "1914";
+		var unlockedColNum = 1;
 
 		var closeButton = $(".close-button");
 		var images = [
@@ -125,6 +126,34 @@
 		];
 		
 		var filters = ['events', 'photos', 'stories', 'letters', 'propaganda', 'newspapers', 'other'];
+		
+		var yearStatus = [
+		{
+			year: 1914,
+			unlocked: true,
+			contentNum: 2
+		}, 
+		{
+			year: 1915,
+			unlocked: false,
+			contentNum: 1
+		},
+		{
+			year: 1916,
+			unlocked: false,
+			contentNum: 0
+		},
+		{
+			year: 1917,
+			unlocked: false,
+			contentNum: 0
+		},
+		{
+			year: 1918,
+			unlocked: false,
+			contentNum:0
+		}
+		];
 
 		let content = [
 			{
@@ -134,7 +163,7 @@
 				date: "27/01/1914",
 				title: "war declared",
 				transcript: "blah blah blah",
-				unlocked: false
+				unlocked: true
 			},
 			{
 				username: "carol",
@@ -193,6 +222,68 @@
 				username: "Dave",
 				img: "images/letter.png",
 				type: "events",
+				date: "27/09/1914",
+				title: "war declared",
+				transcript: "blah blah blah",
+				unlocked: true
+			},
+			{
+				username: "carol",
+				img: "images/letter.png",
+				type: "stories",
+				date: "28/09/1914",
+				title: "war declared",
+				transcript: "blah blah blah",
+				unlocked: true
+			},
+			{
+				username: "kerry",
+				img: "images/letter.jpg",
+				type: "photos",
+				date: "30/09/1914",
+				title: "war declared",
+				transcript: "blah blah blah",
+				unlocked: true
+			},
+			{
+				username: "kerry",
+				img: "images/letter.png",
+				type: "letters",
+				date: "10/10/1914",
+				title: "war declared",
+				transcript: "blah blah blah",
+				unlocked: false
+			},
+			{
+				username: "Dave",
+				img: "images/letter.png",
+				type: "propaganda",
+				date: "12/10/1914",
+				title: "war declared",
+				transcript: "blah blah blah",
+				unlocked: true
+			},
+			{
+				username: "carol",
+				img: "images/letter.png",
+				type: "newspapers",
+				date: "22/10/1914",
+				title: "war declared",
+				transcript: "blah blah blah",
+				unlocked: true
+			} ,
+			{
+				username: "kerry",
+				img: "images/letter.jpg",
+				type: "other",
+				date: "26/10/1914",
+				title: "war declared",
+				transcript: "blah blah blah",
+				unlocked: true
+			},{
+				username: "Dave",
+				img: "images/letter.png",
+				type: "events",
 				date: "01/07/1915",
 				title: "war declared",
 				transcript: "blah blah blah",
@@ -232,7 +323,7 @@
 				date: "27/07/1915",
 				title: "war declared",
 				transcript: "blah blah blah",
-				unlocked: true
+				unlocked: false
 			},
 			{
 				username: "carol",
@@ -251,11 +342,87 @@
 				title: "war declared",
 				transcript: "blah blah blah",
 				unlocked: true
+			}, {
+				username: "Dave",
+				img: "images/letter.png",
+				type: "events",
+				date: "27/09/1915",
+				title: "war declared",
+				transcript: "blah blah blah",
+				unlocked: true
+			},
+			{
+				username: "carol",
+				img: "images/letter.png",
+				type: "stories",
+				date: "28/09/1915",
+				title: "war declared",
+				transcript: "blah blah blah",
+				unlocked: true
+			},
+			{
+				username: "kerry",
+				img: "images/letter.jpg",
+				type: "photos",
+				date: "30/09/1915",
+				title: "war declared",
+				transcript: "blah blah blah",
+				unlocked: true
+			},
+			{
+				username: "kerry",
+				img: "images/letter.png",
+				type: "letters",
+				date: "10/10/1915",
+				title: "war declared",
+				transcript: "blah blah blah",
+				unlocked: false
+			},
+			{
+				username: "Dave",
+				img: "images/letter.png",
+				type: "propaganda",
+				date: "12/10/1915",
+				title: "war declared",
+				transcript: "blah blah blah",
+				unlocked: true
+			},
+			{
+				username: "carol",
+				img: "images/letter.png",
+				type: "newspapers",
+				date: "22/10/1915",
+				title: "war declared",
+				transcript: "blah blah blah",
+				unlocked: true
+			} ,
+			{
+				username: "kerry",
+				img: "images/letter.jpg",
+				type: "other",
+				date: "26/10/1915",
+				title: "war declared",
+				transcript: "blah blah blah",
+				unlocked: true
 			}
 		]
 
 		function init() {
-
+			let temp = unlockedColNum;		
+			
+			/*$.each(yearStatus, function (index, value) {		
+			alert($('#'+ value.year).attr('contentNumUnlocked'));
+				if (temp >0 || value.year == 1914){
+					$('#'+ value.year).attr('unlocked', true);
+					$('#'+ value.year).attr('contentNumUnlocked', 2);
+					alert($('#'+ value.year).attr('contentNumUnlocked'));
+				}	else {
+					$('#'+ value.year).attr('unlocked', false);
+				}
+				
+				temp-= value.contentNum;
+			});*/
+			
 			let day, month, year;
 			content = content.sort(function(a, b) {
 				day = a.date.substring(0, 2);
@@ -278,13 +445,12 @@
 			});		
 			
 			let newContent = [];
-			
+
 			for (var i = 0; i < content.length; i++){
 				if (content[i].date.substring(6) == contentYear){
 					newContent.push(content[i]);
 				}
 			}
-
 	
 			$("#timelineItems").empty();
 			$("#scrubber").empty();
@@ -298,6 +464,9 @@
 			let count =0;
 			
 			$.each(newContent, function (index, value) {
+			let contentNumber = $('#'+ contentYear).attr('contentNumUnlocked');
+			
+			if (contentNumber >= colNum){
 				if (index % (filters.length  + (7-filters.length)) ==0) {
 					colNum++;
 					$("#scrubber").append('<div id="sc' + colNum + '" class="scrubberCol"  style=" width:'+ boxWidth + '%">');				
@@ -326,18 +495,18 @@
 				} else {
 					heightPercent = 10;
 				}
-				count++;
-				
-				$('#sc' + colNum).append('<a href="#'+ index +'"><div class="box" style="background-color:' + color + '; height:'+ boxHeight +'px; width:'+ 100 + '%"></div></a>');
-				addToList(index, value, widthPercent, heightPercent);
-				widthPercent += 2.5;
-				}	
+				count++
+					$('#sc' + colNum).append('<a href="#'+ index +'"><div class="box" style="background-color:' + color + '; height:'+ boxHeight +'px; width:'+ 100 + '%"></div></a>');
+					addToList(index, value, widthPercent, heightPercent);
+					widthPercent += 2.5;
+				}
+			}
 			});
 
 			$(".timeline__content").click(function () {
 				let index = this.id.substring(1);
 				toggleModal();
-				
+				alert();
 				if (content[index].unlocked == true) {
 					mHeader.append("'" + content[index].title + " " + content[index].unlocked + "' <br>transcribed by " + content[index].username);
 					$('#modalImage').append('<img width=400px src="' + content[this.id.substring(1)].img + '">');
@@ -348,14 +517,26 @@
 					mTranscript.append('<textarea id="ta" rows="4" cols="50"></textarea><button id="submit">Submit</button>');
 					$("#submit").click(function () {
 						let obj = { username: "Karen", img: "./images/newspaper.png", type: "newspaper", date: "2/10/1916", title: $("#ha").val(), transcript: $("#ta").val() };
-					content.push(obj);
+						var num = $('#'+ contentYear).attr('contentNumUnlocked');
+						var idNum = contentYear;
+						idNum++;
+						num++;
 					
+						if (num  > $('#'+ contentYear).attr('contentNum')){
+							$('#'+ idNum).attr('unlocked', true);
+							$('#'+ idNum).attr('contentNumUnlocked', 1);
+						} else {
+							$('#'+ contentYear).attr('contentNumUnlocked', num);
+						}
+						
 					
-					content[index].transcript = $('#ta').val();
-					content[index].unlocked = true;
-					toggleModal();
-					init();
-				});
+						content.push(obj);
+						unlockedColNum++;
+						content[index].transcript = $('#ta').val();
+						content[index].unlocked = true;
+						toggleModal();
+						init();
+						});
 				}
 				modal.css("position", "sticky");
 			});
@@ -379,8 +560,6 @@
 			$("#timelineItems").append("<div id='I" + index + "' class='float depth10 timeline__content' style='left: " + width + "%; top: " + height +
 				"%;'><a name='"+index +"'></a></div>");
 			}
-			
-
 			$("#I" + index).append(t);
 			$("#I" + index).append(span);
 		}
@@ -435,10 +614,13 @@
 			init();
         });
 		
-		$('.year').click(function() {
-		    contentYear = this.id;
-			$("#yearText").text(contentYear);
-			init();
+		$('.year').click(function() {		
+			if ($('#'+ this.id).attr("unlocked")=='true'){
+				unlockedColNum = 1;
+				contentYear = this.id;
+				$("#yearText").text(contentYear);
+				init();
+			}
         });
 		
 		closeButton.click(toggleModal);
