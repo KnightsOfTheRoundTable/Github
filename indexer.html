@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Letters From the Front</title>
+	<meta name="description" content="World War One Interactive Timeline">
+	<link rel="stylesheet" href="github.css">
+	<link href="https://fonts.googleapis.com/css?family=Roboto:100" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Nothing+You+Could+Do" rel="stylesheet">
+</head>
+
+<body>
+	<div class="modal">
+		<div class="modal-content">
+			<span class="close-button">&times;</span>
+			<div id="modalHeader"></div>
+			<div id="modalData">
+				<div id="modalImage"></div>
+				<div id="modalTranscript"></div>
+			</div>
+		</div>
+	</div>
+
+	<!-- Header -->
+	<div class="header" style="left: 0%; top: 0%;">
+		<div class="top-header">
+			<a href="#logo"><img src="images/Letters-logo-1.png"></a>
+			<!-- <div id="heading">WW1</div> -->
+			<ul class="centered">
+				<li><a href="#1914">1914</a></li>
+				<li><a href="#1915">1915</a></li>
+				<li><a href="#1916">1916</a></li>
+				<li><a href="#1917">1917</a></li>
+				<li><a href="#1918">1918</a></li>
+			</ul>
+			<a href="#account"><img src="images/account.png"></a>
+		</div>
+		<div  class="filter-bar">
+			<div class="centered">
+				<input class="check"  id="photos" type="checkbox" name="photos" value="photos" checked="true">
+				<label for="photos">Photos</label>
+				<input class="check" id="stories" type="checkbox" name="stories" value="stories" checked="true">
+				<label for="stories">Stories</label>
+				<input class="check" id="events" type="checkbox"name="events" value="events" checked="true">
+				<label for="events">Events</label>
+				
+				<input class="check" id="letters" type="checkbox"  name="letters" value="letters" checked="true">
+				<label for="letters">Letters</label>
+				
+				<input class="check" id="propaganda"type="checkbox"  name="propaganda" value="propaganda" checked="true">
+				<label for="propaganda">Stories</label>
+				
+				<input class="check" id="newspapers" type="checkbox" name="newspapers" value="newspapers" checked="true">
+				<label for="newspapers">Newspapers</label>
+				
+				<input class="check" id="other" type="checkbox" name="other" value="other" checked="true">
+				<label for="other">other</label>
+			</div>
+		</div>
+	
+	</div>
+
+	<!-- Timeline -->
+
+	<div class="timeline">
+		<div class="timeline-texture"> </div>
+		<div id="title" class="float depth10" style="left: 7%; top: 40%;">
+			<a name="home">
+				<h1>Letters From The Front.</h1>
+			</a>
+		</div>
+
+		<div class="float depth20" style="left: 18.5%; top: 41%;">
+			<a href="#1914">
+				<img src="images/arrow-forward.png">
+			</a>
+		</div>
+		<div class="float depth10" style="left: 21%; top: 35%;">1914</div>
+
+
+		<div class="float depth20 telegram" style="left: 27%; top: 45%;">Jun 26th, Archduke Franz Ferdenand assassinated!</div>
+		<div class="float depth20 telegram" style="left: 35%; top: 45%;">Aug 4th, German troops invade Poland. </div>
+		<div class="float depth20 telegram" style="left: 45%; top: 45%;">Sep 23rd, Allied forces join the Western Front.</div>
+
+        
+    
+
+
+        
+		<!-- Image Divs -->
+		<div id="timelineItems">
+
+
+		</div>
+	</div>
+
+	<!-- Button -->
+	<div class="footer">
+		<button id="circle-button">+</button>
+		<div id="buttons">
+			<button id="addStory" class="circle-button-buttons">Story</button>
+			<button class="circle-button-buttons">Photo</button>
+			<button id="addTranscript" class="circle-button-buttons">Transcribe</button>
+		</div>
+	</div>
+    
+        <!-- Scrubber -->
+	    <div class="footer" style="left: 2%; top: 85%;" id="scrubber">
+			<div class="scrubberCol"> </div>
+		</div>
+
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script src="timeline/js/timeline.min.js"></script>
+	<script type="text/javascript">
+		var buttonsShow = false;
+		var modal = $(".modal");
+		var mHeader = $("#modalHeader");
+		var mData = $("#modalData");
+		var mTranscript = $("#modalTranscript");
+		var closeButton = $(".close-button");
+		var images = [
+			"war.jpg",
+			"night.jpg",
+			"planes.jpg",
+			"trees.jpg",
+			"walk.jpg",
+			"warbombs.jpg"
+		];
+		var filters = ['events', 'photos', 'stories', 'letters', 'propaganda', 'newspapers', 'other'];
+		let content = [
+			{
+				username: "Dave",
+				img: "images/letter.png",
+				type: "events",
+				date: "27/07/1914",
+				title: "war declared",
+				transcript: "blah blah blah"
+			},
+			{
+				username: "carol",
+				img: "images/letter.png",
+				type: "letters",
+				date: "27/07/1913",
+				title: "war declared",
+				transcript: "blah blah blah"
+			},
+			{
+				username: "kerry",
+				img: "images/letter.jpg",
+				type: "propaganda",
+				date: "27/08/1914",
+				title: "war declared",
+				transcript: "blah blah blah"
+			},
+			{
+				username: "kerry",
+				img: "images/letter.png",
+				type: "letters",
+				date: "27/08/1914",
+				title: "war declared",
+				transcript: "blah blah blah"
+			},
+			{
+				username: "Dave",
+				img: "images/letter.png",
+				type: "events",
+				date: "27/07/1914",
+				title: "war declared",
+				transcript: "blah blah blah"
+			},
+			{
+				username: "carol",
+				img: "images/letter.png",
+				type: "letters",
+				date: "27/07/1913",
+				title: "war declared",
+				transcript: "blah blah blah"
+			}
+		]
+		function init() {
+			let day, month, year;
+			/* content.sort(function(a, b) {
+				day = a.date.substring(0, 2);
+				month = a.date.substring(3, 5);
+				year = a.date.substring(6);
+				a = new Date(year, month, day);
+				
+				day = b.date.substring(0, 2);
+				month = b.date.substring(3, 5);
+				year = b.date.substring(6);
+				b = new Date(year, month, day);
+				
+				if (b > a){
+					return -1;
+				} else if (b < a){
+					return 1;
+				} else {
+					return 0;
+				}
+			});		*/
+			$("#timelineItems").empty();
+			$("#scrubber").empty();
+			let widthPercent = 23;
+			let heightPercent;
+			let color = "";
+			let colNum = 0;
+			
+			
+			$.each(content, function (index, value) {
+			
+				
+				if (index % 2 == 0) {
+					heightPercent = 52;
+				} else {
+					heightPercent = 10;
+				}
+				
+				if ($.inArray(value.type, filters) != -1) {
+					addToList(index, value, widthPercent, heightPercent);
+				}
+				if (index % 4 == 0) {
+					colNum++;
+					$("#scrubber").append('<div id="sc' + colNum + '" class="scrubberCol">');
+				}
+				if (value.type == 'events') {
+					color = "grey";
+				} else if (value.type == 'letters') {
+					color = "antiquewhite";
+				} else if (value.type == 'propaganda') {
+					color = "#333";
+				}
+				$('#sc' + colNum).append('<div class="box" style="background-color:' + color + '"></div>');
+				
+				widthPercent += 2.5;
+			});
+			$(".timeline__content").click(function () {
+				let index = this.id.substring(1);
+				toggleModal();
+				mHeader.append("'" + content[index].title + "' <br>transcribed by " + content[index].username);
+				$('#modalImage').append('<img width=400px src="' + content[this.id.substring(1)].img + '">');
+				mTranscript.append('<p>' + content[index].transcript + '</p>');
+				modal.css("position", "sticky")
+			});
+		}
+		function toggleModal() {
+			modal.css("position", "fixed");
+			modal.toggleClass("show-modal");
+			$('#modalHeader').empty();
+			$('#modalImage').empty();
+			$('#modalTranscript').empty();
+		}
+		function addToList(index, value, width, height) {
+			let t = "<span>" + value.type + "</span>";
+			let span = "<span>'" + value.title + "'</span><span>Transcribed by " + value.username + "</span><span>" + value.date + "</span>";
+			if (index == 0) {
+				$("#timelineItems").append("<div id='I" + index + "' class='float depth10 timeline__content' style='left: " + width + "%; top: " + height + "%; background-image: url(" + value.img + ")'><a name='1914'></a></div>");
+			} else {
+				$("#timelineItems").append("<div id='I" + index + "' class='float depth10 timeline__content' style='left: " + width + "%; top: " + height + "%; background-image: url(" + value.img + ")'></div>");
+			}
+			$("#I" + index).append(t);
+			$("#I" + index).append(span);
+		}
+		$("#addStory").click(function () {
+			toggleModal();
+			mHeader.append("Add story");
+			$('#modalImage').append('<p>Soldier search<input type="text"></p><p>Private John Anthony Hopkins</p><img width=100px src="./images/family.png">');
+			mTranscript.append('<textarea id="ta" rows="4" cols="50"></textarea><button id="submit">Submit</button>');
+			$("#submit").click(function () {
+				let obj = { username: "Karen", img: "./images/family.png", type: "story", date: "2/10/1916", title: "story", transcript: $("#ta").val() };
+				content.push(obj);
+				toggleModal();
+				init();
+			});
+		});
+		$("#addTranscript").click(function () {
+			toggleModal();
+			mHeader.append("Transcribe document");
+			$('#modalImage').append('<img width=400px src="./images/newspaper.png">');
+			mTranscript.append('<textarea id="ha" rows="1" cols="50"></textarea><textarea id="ta" rows="4" cols="50"></textarea><button id="submit">Submit</button>');
+			$("#submit").click(function () {
+				let obj = { username: "Karen", img: "./images/newspaper.png", type: "newspaper", date: "2/10/1916", title: $("#ha").val(), transcript: $("#ta").val() };
+				content.push(obj);
+				toggleModal();
+				init();
+			});
+		});
+		init();
+		$("#circle-button").click(function () {
+			var buttons = $("#buttons");
+			if (buttonsShow == true) {
+				buttons.css('display', 'none');
+			} else {
+				buttons.css('display', 'block');
+			}
+			buttonsShow = !buttonsShow;
+		});
+		
+		$('.check').click(function() {
+		
+			let i = filters.indexOf(this.id);
+			if($.inArray(this.id, filters) != -1){
+				filters.splice(i, 1);
+			} else {
+				filters.push(this.id);
+			}			
+			alert(filters);
+			init();
+        });
+		closeButton.click(toggleModal);
+	</script>
+</body>
+
+</html>
+© 2018 GitHub, Inc.
+Terms
+Privacy
+Security
+Status
+Help
+Contact GitHub
+Pricing
+API
+Training
+Blog
+About
+    
