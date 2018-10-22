@@ -465,6 +465,19 @@
 			
 			$.each(newContent, function (index, value) {
 			let contentNumber = $('#'+ contentYear).attr('contentNumUnlocked');
+			let start =0;
+			if (contentYear == 1914){
+				start = 0;
+			} else if (contentYear == 1915){
+			
+				start = 14;
+			} else if (contentYear == 1916){
+				start = 28;
+			} else if (contentYear == 1917){
+				start = 28;
+			}else if (contentYear == 1918){
+				start = 28;
+			}
 			
 			if (contentNumber >= colNum){
 				if (index % (filters.length  + (7-filters.length)) ==0) {
@@ -496,9 +509,11 @@
 					heightPercent = 10;
 				}
 				count++
-					$('#sc' + colNum).append('<a href="#'+ index +'"><div class="box" style="background-color:' + color + '; height:'+ boxHeight +'px; width:'+ 100 + '%"></div></a>');
-					addToList(index, value, widthPercent, heightPercent);
-					widthPercent += 2.5;
+				let n = index+start;
+				$('#sc' + colNum).append('<a href="#'+ n +'"><div class="box" style="background-color:' + color + '; height:'+ boxHeight +'px; width:'+ 100 + '%"></div></a>');
+					
+				addToList(n, value, widthPercent, heightPercent);
+				widthPercent += 2.5;
 				}
 			}
 			});
@@ -506,7 +521,7 @@
 			$(".timeline__content").click(function () {
 				let index = this.id.substring(1);
 				toggleModal();
-				alert();
+
 				if (content[index].unlocked == true) {
 					mHeader.append("'" + content[index].title + " " + content[index].unlocked + "' <br>transcribed by " + content[index].username);
 					$('#modalImage').append('<img width=400px src="' + content[this.id.substring(1)].img + '">');
