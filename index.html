@@ -15,19 +15,57 @@
 	<div class="modal">
 		<div class="modal-content">
 			<span class="close-button">&times;</span>
-			<div id="modalHeader"></div>
-			<div id="modalData">
+			<div id="modalContainer">
 				<div id="modalImage"></div>
-				<div id="modalTranscript"></div>
+				<div id="modalText">
+					<div id="modalHeader"></div>
+					<div id="modalTranscript"></div>
+				</div>
 			</div>
 		</div>
 	</div>
 
+	<div class="intro-modal" id="intro-modal">
+		<p id="welcome">W E L C O M E</p>
+		<h1 class="intro-h1">Letters From</h1>
+		<h1 class="intro-h1"> The Front</h1>
+		<h2 class="intro-h2">an interactive history timeline web experience</h2>
+
+		<p class="intro-p"> Our project lets you learn more about the First World War through exploring archival resources held
+			by The State Library of Queensland.</p>
+
+		<h2 class="intro-h2"> Here are some handy tips for using the website</h2>
+		<div class="intro-container">
+			<div class="intro-box">
+				<img src="images/stories.png" width="200px" />
+				<p class="intro-p">Explore the timeline by clicking on content</p>
+			</div>
+			<div class="intro-box">
+				<img src="images/stories.png" width="200px" />
+				<p class="intro-p">Unlock more content by transcribing documents (bonus: this helps make the project more accessible)</p>
+			</div>
+			<div class="intro-box">
+				<img src="images/stories.png" width="200px" />
+				<p class="intro-p"> Customise your experience by selecting filter categories that suit your interests</p>
+			</div>
+			<div class="intro-box">
+				<img src="images/stories.png" width="200px" />
+				<p class="intro-p"> Upload your own family stories or photographs to help grow our community</p>
+			</div>
+			<div class="intro-box">
+				<img src="images/stories.png" width="200px" />
+				<p class="intro-p"> Skip ahead using the scrubber at the bottom </p>
+			</div>
+		</div>
+		<button class="intro-btn" id="intro-btn">E N T E R</button>
+	</div>
+
 	<!-- Header -->
-	<div class="header" style="left: 0%; top: 0%;">
+	<div id="header" class="header" style="display: none; left: 0%; top: 0%;">
 		<div class="top-header">
-			<a href="#logo"><img src="images/Letters-logo-1.png"></a>
-			<!-- <div id="heading">WW1</div> -->
+			<!--
+			<a href="#logo"><img src="images/Letters-logo-1.png"></a>-->
+			<img src="images/Letters-logo-1.png">
 			<ul class="years centered">
 				<li class="year" unlocked=true contentNum=2 contentNumUnlocked=1 id="1914"><a>1914</a></li>
 				<li class="year" unlocked=false contentNum=2 contentNumUnlocked=0 id="1915"><a>1915</a></li>
@@ -35,38 +73,42 @@
 				<li class="year" unlocked=false contentNum=0 contentNumUnlocked=0 id="1917"><a>1917</a></li>
 				<li class="year" unlocked=false contentNum=0 contentNumUnlocked=0 id="1918"><a>1918</a></li>
 			</ul>
-			<a href="#account"><img src="images/account.png"></a>
+			<!--<a href="#account"><img src="images/account.png"></a>-->
+			<img src="images/account.png">
 		</div>
-		<div  class="filter-bar">
+		<div class="filter-bar">
 			<div class="centered">
-				<input class="check"  id="photos" type="checkbox" name="photos" value="photos" checked="true">
+				<input class="check" id="photos" type="checkbox" name="photos" value="photos" checked="true">
 				<label for="photos">Photos</label>
 				<input class="check" id="stories" type="checkbox" name="stories" value="stories" checked="true">
 				<label for="stories">Stories</label>
-				<input class="check" id="events" type="checkbox"name="events" value="events" checked="true">
+				<input class="check" id="events" type="checkbox" name="events" value="events" checked="true">
 				<label for="events">Events</label>
-				
-				<input class="check" id="letters" type="checkbox"  name="letters" value="letters" checked="true">
+
+				<input class="check" id="letters" type="checkbox" name="letters" value="letters" checked="true">
 				<label for="letters">Letters</label>
-				
-				<input class="check" id="propaganda"type="checkbox"  name="propaganda" value="propaganda" checked="true">
+
+				<input class="check" id="propaganda" type="checkbox" name="propaganda" value="propaganda" checked="true">
 				<label for="propaganda">Propaganda</label>
-				
+
 				<input class="check" id="newspapers" type="checkbox" name="newspapers" value="newspapers" checked="true">
 				<label for="newspapers">Newspapers</label>
-				
+
 				<input class="check" id="other" type="checkbox" name="other" value="other" checked="true">
-				<label for="other">other</label>
+				<label for="other">Community </label>
+
+				<input class="check" id="other" type="checkbox" name="other" value="other" checked="true">
+				<label for="other">Other</label>
 			</div>
 		</div>
-	
+
 	</div>
 
 	<!-- Timeline -->
 
-	<div class="timeline">
+	<div id="timeline" class="timeline" style="display: none">
 		<div class="timeline-texture"> </div>
-        <div class="telegram-texture"> </div>
+		<div class="telegram-texture"> </div>
 		<div id="title" class="float depth10" style="left: 7%; top: 50%;">
 			<a name="home">
 				<h1>Letters From The Front.</h1>
@@ -78,32 +120,31 @@
 				<img src="images/arrow-forward.png">
 			</a>
 		</div>
-        <div class="float depth10" style="left: 18%; top: 53%;"><span id="yearText">1914</span></div>
+		<div class="float depth10" style="left: 18%; top: 53%;"><span id="yearText">1914</span></div>
 
-        
+
 		<!-- Image Divs -->
 		<div id="timelineItems">
 
 		</div>
-        <div class="float depth25 telegram" style="left: 27%; top: 100%;">Jun 26th, Archduke Franz Ferdenand assassinated!</div>
+		<div class="float depth25 telegram" style="left: 27%; top: 100%;">Jun 26th, Archduke Franz Ferdenand assassinated!</div>
 		<div class="float depth25 telegram" style="left: 35%; top: 100%;">Aug 4th, German troops invade Poland. </div>
 		<div class="float depth25 telegram" style="left: 45%; top: 100%;">Sep 23rd, Allied forces join the Western Front.</div>
 	</div>
-      
+
 	<!-- Button -->
-	<div class="footer">
+	<div id="footer" class="footer" style="display: none">
 		<button id="circle-button">+</button>
 		<div id="buttons">
 			<button id="addStory" class="circle-button-buttons">Story</button>
 			<button class="circle-button-buttons">Photo</button>
-			<button id="addTranscript" class="circle-button-buttons">Transcribe</button>
 		</div>
-         <!-- Scrubber -->
-	    <div class="footer" style="left: 2%; top: 85%;" id="scrubber">
+		<!-- Scrubber -->
+		<div class="footer" style="left: 2%; top: 85%;" id="scrubber">
 			<div class="scrubberCol"> </div>
 		</div>
 	</div>
-    
+
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	<script src="timeline/js/timeline.min.js"></script>
 	<script type="text/javascript">
@@ -115,6 +156,13 @@
 		var contentYear = "1914";
 		var unlockedColNum = 1;
 
+		$("#intro-btn").click(function (e) {
+			$("#intro-modal").fadeOut();
+			$("#header").fadeIn();
+			$("#timeline").fadeIn();
+			$("#footer").fadeIn();
+		});
+
 		var closeButton = $(".close-button");
 		var images = [
 			"war.jpg",
@@ -124,81 +172,81 @@
 			"walk.jpg",
 			"warbombs.jpg"
 		];
-		
+
 		var filters = ['events', 'photos', 'stories', 'letters', 'propaganda', 'newspapers', 'other'];
-		
+
 		var yearStatus = [
-		{
-			year: 1914,
-			unlocked: true,
-			contentNum: 2
-		}, 
-		{
-			year: 1915,
-			unlocked: false,
-			contentNum: 1
-		},
-		{
-			year: 1916,
-			unlocked: false,
-			contentNum: 0
-		},
-		{
-			year: 1917,
-			unlocked: false,
-			contentNum: 0
-		},
-		{
-			year: 1918,
-			unlocked: false,
-			contentNum:0
-		}
+			{
+				year: 1914,
+				unlocked: true,
+				contentNum: 2
+			},
+			{
+				year: 1915,
+				unlocked: false,
+				contentNum: 1
+			},
+			{
+				year: 1916,
+				unlocked: false,
+				contentNum: 0
+			},
+			{
+				year: 1917,
+				unlocked: false,
+				contentNum: 0
+			},
+			{
+				year: 1918,
+				unlocked: false,
+				contentNum: 0
+			}
 		];
 
 		let content = [
 			{
 				username: "Dave",
-				img: "images/letter.png",
+				img: "images/letter.png.jpg",
 				type: "events",
 				date: "27/01/1914",
 				title: "war declared",
-				transcript: "blah blah blah",
+				transcript: "Event during the First World War",
 				unlocked: true
 			},
 			{
 				username: "carol",
-				img: "images/letter.png",
+				img: "images/stories.png",
 				type: "stories",
 				date: "27/09/1914",
 				title: "war declared",
-				transcript: "blah blah blah",
+				transcript: "Community story from the First World War",
 				unlocked: false
 			},
 			{
 				username: "kerry",
-				img: "images/letter.jpg",
+				img: "images/photo.png",
 				type: "photos",
 				date: "27/05/1914",
 				title: "war declared",
-				transcript: "blah blah blah",
+				transcript: "Photograph of the Auchterlonie brothers of Gympie (1914)",
 				unlocked: true
 			},
 			{
 				username: "kerry",
-				img: "images/letter.png",
+				img: "images/letter.png.jpg",
 				type: "letters",
 				date: "27/06/1914",
 				title: "war declared",
-				transcript: "blah blah blah",
+				transcript: "Letter from the First World War",
 				unlocked: true
 			},
 			{
 				username: "Dave",
-				img: "images/letter.png",
+				img: "images/propaganda.png",
 				type: "propaganda",
 				date: "27/08/1914",
 				title: "war declared",
-				transcript: "blah blah blah",
+				transcript: "Propaganda from the First World War",
 				unlocked: true
 			},
 			{
@@ -209,7 +257,7 @@
 				title: "war declared",
 				transcript: "blah blah blah",
 				unlocked: true
-			} ,
+			},
 			{
 				username: "kerry",
 				img: "images/letter.jpg",
@@ -271,7 +319,7 @@
 				title: "war declared",
 				transcript: "blah blah blah",
 				unlocked: true
-			} ,
+			},
 			{
 				username: "kerry",
 				img: "images/letter.jpg",
@@ -280,7 +328,7 @@
 				title: "war declared",
 				transcript: "blah blah blah",
 				unlocked: true
-			},{
+			}, {
 				username: "Dave",
 				img: "images/letter.png",
 				type: "events",
@@ -333,7 +381,7 @@
 				title: "war declared",
 				transcript: "blah blah blah",
 				unlocked: true
-			} ,
+			},
 			{
 				username: "kerry",
 				img: "images/letter.jpg",
@@ -388,16 +436,16 @@
 				unlocked: true
 			},
 			{
-				username: "carol",
+				username: "Carol",
 				img: "images/letter.png",
 				type: "newspapers",
 				date: "22/10/1915",
 				title: "war declared",
 				transcript: "blah blah blah",
 				unlocked: true
-			} ,
+			},
 			{
-				username: "kerry",
+				username: "Kerry",
 				img: "images/letter.jpg",
 				type: "other",
 				date: "26/10/1915",
@@ -408,8 +456,8 @@
 		]
 
 		function init() {
-			let temp = unlockedColNum;		
-			
+			let temp = unlockedColNum;
+
 			/*$.each(yearStatus, function (index, value) {		
 			alert($('#'+ value.year).attr('contentNumUnlocked'));
 				if (temp >0 || value.year == 1914){
@@ -422,36 +470,36 @@
 				
 				temp-= value.contentNum;
 			});*/
-			
+
 			let day, month, year;
-			content = content.sort(function(a, b) {
+			content = content.sort(function (a, b) {
 				day = a.date.substring(0, 2);
 				month = a.date.substring(3, 5);
 				year = a.date.substring(6);
 				a = new Date(year, month, day);
-				
+
 				day = b.date.substring(0, 2);
 				month = b.date.substring(3, 5);
 				year = b.date.substring(6);
 				b = new Date(year, month, day);
-				
-				if (b > a){
+
+				if (b > a) {
 					return -1;
-				} else if (b < a){
+				} else if (b < a) {
 					return 1;
 				} else {
 					return 0;
 				}
-			});		
-			
+			});
+
 			let newContent = [];
 
-			for (var i = 0; i < content.length; i++){
-				if (content[i].date.substring(6) == contentYear){
+			for (var i = 0; i < content.length; i++) {
+				if (content[i].date.substring(6) == contentYear) {
 					newContent.push(content[i]);
 				}
 			}
-	
+
 			$("#timelineItems").empty();
 			$("#scrubber").empty();
 
@@ -459,63 +507,63 @@
 			let heightPercent;
 			let color = "";
 			let colNum = 0;
-			let boxHeight = 100/filters.length;
-			let boxWidth = 100 /(newContent.length/(filters.length+(7-filters.length)));
-			let count =0;
-			
+			let boxHeight = 100 / filters.length;
+			let boxWidth = 100 / (newContent.length / (filters.length + (7 - filters.length)));
+			let count = 0;
+
 			$.each(newContent, function (index, value) {
-			let contentNumber = $('#'+ contentYear).attr('contentNumUnlocked');
-			let start =0;
-			if (contentYear == 1914){
-				start = 0;
-			} else if (contentYear == 1915){
-			
-				start = 14;
-			} else if (contentYear == 1916){
-				start = 28;
-			} else if (contentYear == 1917){
-				start = 28;
-			}else if (contentYear == 1918){
-				start = 28;
-			}
-			
-			if (contentNumber >= colNum){
-				if (index % (filters.length  + (7-filters.length)) ==0) {
-					colNum++;
-					$("#scrubber").append('<div id="sc' + colNum + '" class="scrubberCol"  style=" width:'+ boxWidth + '%">');				
+				let contentNumber = $('#' + contentYear).attr('contentNumUnlocked');
+				let start = 0;
+				if (contentYear == 1914) {
+					start = 0;
+				} else if (contentYear == 1915) {
+
+					start = 14;
+				} else if (contentYear == 1916) {
+					start = 28;
+				} else if (contentYear == 1917) {
+					start = 28;
+				} else if (contentYear == 1918) {
+					start = 28;
 				}
-					
-				if (value.type == 'events') {
-					color = "blue";
-				} else if (value.type == 'letters') {
-					color = "yellow";
-				} else if (value.type == 'propaganda') {
-					color = "red";
-				} else if (value.type == 'other') {
-					color = "grey";
-				} else if (value.type == 'newspapers') {
-					color = "white";
-				} else if (value.type == 'stories') {
-					color = "black";
-				} else if (value.type == 'photos') {
-					color = "green";
+
+				if (contentNumber >= colNum) {
+					if (index % (filters.length + (7 - filters.length)) == 0) {
+						colNum++;
+						$("#scrubber").append('<div id="sc' + colNum + '" class="scrubberCol"  style=" width:' + boxWidth + '%">');
+					}
+
+					if (value.type == 'events') {
+						color = "blue";
+					} else if (value.type == 'letters') {
+						color = "yellow";
+					} else if (value.type == 'propaganda') {
+						color = "red";
+					} else if (value.type == 'other') {
+						color = "grey";
+					} else if (value.type == 'newspapers') {
+						color = "white";
+					} else if (value.type == 'stories') {
+						color = "black";
+					} else if (value.type == 'photos') {
+						color = "green";
+					}
+
+					if ($.inArray(value.type, filters) != -1) {
+
+						if (count % 2 == 0) {
+							heightPercent = 52;
+						} else {
+							heightPercent = 10;
+						}
+						count++
+						let n = index + start;
+						$('#sc' + colNum).append('<a href="#' + n + '"><div class="box" style="background-color:' + color + '; height:' + boxHeight + 'px; width:' + 100 + '%"></div></a>');
+
+						addToList(n, value, widthPercent, heightPercent);
+						widthPercent += 2.5;
+					}
 				}
-				
-				if ($.inArray(value.type, filters) != -1) {
-					
-				if (count % 2 == 0) {
-					heightPercent = 52;
-				} else {
-					heightPercent = 10;
-				}
-				count++
-				let n = index+start;
-				$('#sc' + colNum).append('<a href="#'+ n +'"><div class="box" style="background-color:' + color + '; height:'+ boxHeight +'px; width:'+ 100 + '%"></div></a>');
-					
-				addToList(n, value, widthPercent, heightPercent);
-				widthPercent += 2.5;
-				}
-			}
 			});
 
 			$(".timeline__content").click(function () {
@@ -532,26 +580,26 @@
 					mTranscript.append('<textarea id="ta" rows="4" cols="50"></textarea><button id="submit">Submit</button>');
 					$("#submit").click(function () {
 						let obj = { username: "Karen", img: "./images/newspaper.png", type: "newspaper", date: "2/10/1916", title: $("#ha").val(), transcript: $("#ta").val() };
-						var num = $('#'+ contentYear).attr('contentNumUnlocked');
+						var num = $('#' + contentYear).attr('contentNumUnlocked');
 						var idNum = contentYear;
 						idNum++;
 						num++;
-					
-						if (num  > $('#'+ contentYear).attr('contentNum')){
-							$('#'+ idNum).attr('unlocked', true);
-							$('#'+ idNum).attr('contentNumUnlocked', 1);
+
+						if (num > $('#' + contentYear).attr('contentNum')) {
+							$('#' + idNum).attr('unlocked', true);
+							$('#' + idNum).attr('contentNumUnlocked', 1);
 						} else {
-							$('#'+ contentYear).attr('contentNumUnlocked', num);
+							$('#' + contentYear).attr('contentNumUnlocked', num);
 						}
-						
-					
+
+
 						content.push(obj);
 						unlockedColNum++;
 						content[index].transcript = $('#ta').val();
 						content[index].unlocked = true;
 						toggleModal();
 						init();
-						});
+					});
 				}
 				modal.css("position", "sticky");
 			});
@@ -567,13 +615,13 @@
 
 		function addToList(index, value, width, height) {
 			let t = "<span>" + value.type + "</span>";
-			let span = "<span>'" + value.title+"'</span><span>Transcribed by " + value.username + "</span><span>" + value.date + "</span>";
-			if (value.unlocked == true){
+			let span = "<span>'" + value.title + "'</span><span>Transcribed by " + value.username + "</span><span>" + value.date + "</span>";
+			if (value.unlocked == true) {
 				$("#timelineItems").append("<div id='I" + index + "' class='float depth10 timeline__content' style='left: " + width + "%; top: " + height +
-				"%; background-image: url(" + value.img + ")'><a name='"+index +"'></a></div>");
+					"%; background-image: url(" + value.img + ")'><a name='" + index + "'></a></div>");
 			} else {
-			$("#timelineItems").append("<div id='I" + index + "' class='float depth10 timeline__content' style='left: " + width + "%; top: " + height +
-				"%;'><a name='"+index +"'></a></div>");
+				$("#timelineItems").append("<div id='I" + index + "' class='float depth10 timeline__content' style='left: " + width + "%; top: " + height +
+					"%;'><a name='" + index + "'></a></div>");
 			}
 			$("#I" + index).append(t);
 			$("#I" + index).append(span);
@@ -617,32 +665,30 @@
 			}
 			buttonsShow = !buttonsShow;
 		});
-		
-		$('.check').click(function() {
+
+		$('.check').click(function () {
 			let i = filters.indexOf(this.id);
 
-			if($.inArray(this.id, filters) != -1){
+			if ($.inArray(this.id, filters) != -1) {
 				filters.splice(i, 1);
 			} else {
 				filters.push(this.id);
-			}			
+			}
 			init();
-        });
-		
-		$('.year').click(function() {		
-			if ($('#'+ this.id).attr("unlocked")=='true'){
+		});
+
+		$('.year').click(function () {
+			if ($('#' + this.id).attr("unlocked") == 'true') {
 				unlockedColNum = 1;
 				contentYear = this.id;
 				$("#yearText").text(contentYear);
 				init();
 			}
-        });
-		
+		});
+
 		closeButton.click(toggleModal);
-		
+
 	</script>
 </body>
 
 </html>
-
-    
