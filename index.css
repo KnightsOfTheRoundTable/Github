@@ -55,7 +55,7 @@ h3 {
 h4 {
     color: antiquewhite;
     font-family: 'Nothing You Could Do', cursive;
-    font-size: .5em;
+    font-size: .35em;
 }
 
 
@@ -224,7 +224,7 @@ button:focus {
   position: relative;
   left: 0;
   top: 0%;
-  width: 12000px;
+  width: 100000px;
   height: 60%;
   font-family: moms_typewriter; 
   transform-style: inherit;
@@ -247,6 +247,16 @@ button:focus {
 .depth1 {
   transform: translateZ(1px);
   z-index: 1;
+}
+
+
+.panel {
+  width: 500px;
+  height: 150px;
+  background-color: #333;
+  box-shadow: 20px 20px 20px black; 
+  opacity: 0.7;
+  padding: 1px 0px 25px 20px;
 }
 
 
@@ -555,4 +565,3 @@ span {
     color: white;
     font-family: 'Roboto';
 }
-
