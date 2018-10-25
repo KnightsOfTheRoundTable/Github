@@ -17,12 +17,12 @@
 			<span class="close-button">&times;</span>
 			<div id="modalHeader"></div>
 			<div id="modalData">
-				<div id="modalImage"></div>
 				<div id="modalTranscript"></div>
+				<div id="modalImage"></div>
 			</div>
 		</div>
 	</div>
-	
+
 	<div class="intro-modal" id="intro-modal">
 		<p id="welcome">W E L C O M E</p>
 		<h1 class="intro-h1">Letters From</h1>
@@ -71,37 +71,37 @@
 			</ul>
 			<img src="images/account.png">
 		</div>
-		
-		<div  class="filter-bar">
+
+		<div class="filter-bar">
 			<div class="centered">
-				<input class="check"  id="photos" type="checkbox" name="photos" value="photos" checked="true">
+				<input class="check" id="photos" type="checkbox" name="photos" value="photos" checked="true">
 				<label for="photos">Photos</label>
 				<input class="check" id="stories" type="checkbox" name="stories" value="stories" checked="true">
 				<label for="stories">Stories</label>
-				<input class="check" id="events" type="checkbox"name="events" value="events" checked="true">
+				<input class="check" id="events" type="checkbox" name="events" value="events" checked="true">
 				<label for="events">Events</label>
-				
-				<input class="check" id="letters" type="checkbox"  name="letters" value="letters" checked="true">
+
+				<input class="check" id="letters" type="checkbox" name="letters" value="letters" checked="true">
 				<label for="letters">Letters</label>
-				
-				<input class="check" id="propaganda"type="checkbox"  name="propaganda" value="propaganda" checked="true">
+
+				<input class="check" id="propaganda" type="checkbox" name="propaganda" value="propaganda" checked="true">
 				<label for="propaganda">Propaganda</label>
-				
+
 				<input class="check" id="newspapers" type="checkbox" name="newspapers" value="newspapers" checked="true">
 				<label for="newspapers">Newspapers</label>
-				
+
 				<input class="check" id="other" type="checkbox" name="other" value="other" checked="true">
 				<label for="other">Community </label>
 			</div>
 		</div>
-	
+
 	</div>
 
 	<!-- Timeline -->
 
 	<div id="timeline" class="timeline" style="display: none">
 		<div class="timeline-texture"> </div>
-        <div class="telegram-texture"> </div>
+		<div class="telegram-texture"> </div>
 		<div id="title" class="float depth10" style="left: 7%; top: 50%;">
 			<a name="home">
 				<h1>Letters From The Front.</h1>
@@ -113,39 +113,39 @@
 				<img src="images/arrow-forward.png">
 			</a>
 		</div>
-        <div class="float depth10" style="left: 18%; top: 53%;"><span id="yearText">1914</span></div>
+		<div class="float depth10" style="left: 18%; top: 53%;"><span id="yearText">1914</span></div>
 
-        
+
 		<!-- Image Divs -->
 		<div id="timelineItems">
 
 		</div>
 		<div id="tele">
-			 <div class="float depth25 telegram" style="left: 27%; top: 100%;">Jun 26th, Archduke Franz Ferdenand assassinated!</div>
+			<div class="float depth25 telegram" style="left: 27%; top: 100%;">Jun 26th, Archduke Franz Ferdenand assassinated!</div>
 			<div class="float depth25 telegram" style="left: 35%; top: 100%;">Aug 4th, German troops invade Poland. </div>
 			<div class="float depth25 telegram" style="left: 45%; top: 100%;">Sep 23rd, Allied forces join the Western Front.</div>
 		</div>
-       
+
 	</div>
-      
+
 	<!-- Button -->
 	<div id="footer" class="footer" style="display: none">
 		<button id="circle-button">+</button>
 		<div id="buttons">
-			<button id="addStory" class="circle-button-buttons">Story</button>
-			<button class="circle-button-buttons">Photo</button>
+			<button id="addStory" class="circle-button-buttons">STORY</button>
+			<button class="circle-button-buttons">PHOTO</button>
 		</div>
-         <!-- Scrubber -->
-	    <div class="footer" style="left: 2%; top: 85%;" id="scrubber">
+		<!-- Scrubber -->
+		<div class="footer" style="left: 2%; top: 85%;" id="scrubber">
 			<div class="scrubberCol"> </div>
 		</div>
 	</div>
-    
+
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	<script src="timeline/js/timeline.min.js"></script>
 	<script type="text/javascript">
-	
-		
+
+
 		var buttonsShow = false;
 		var modal = $(".modal");
 		var mHeader = $("#modalHeader");
@@ -154,9 +154,9 @@
 		var contentYear = "1914";
 		var unlockedColNum = 1;
 		let editClicked = false;
-		
+
 		var soldiers = [];
-	
+
 
 		$("#intro-btn").click(function (e) {
 			$("#intro-modal").fadeOut();
@@ -164,19 +164,19 @@
 			$("#timeline").fadeIn();
 			$("#footer").fadeIn();
 		});
-		
-			
+
+
 		var propaganda = []
-		
-		for (var i = 0; i<43; i++){
-			propaganda[0] = "a"+i;
+
+		for (var i = 0; i < 43; i++) {
+			propaganda[0] = "a" + i;
 		}
-		
+
 		propaganda = shuffle(propaganda);
-		
-		
-		
-		
+
+
+
+
 		var closeButton = $(".close-button");
 		var images = [
 			"war.jpg",
@@ -186,131 +186,131 @@
 			"walk.jpg",
 			"warbombs.jpg"
 		];
-		
+
 		var filters = ['events', 'photos', 'stories', 'letters', 'propaganda', 'newspapers', 'other'];
-		
+
 		var yearStatus = [
-		{
-			year: 1914,
-			unlocked: true,
-			contentNum: 2
-		}, 
-		{
-			year: 1915,
-			unlocked: false,
-			contentNum: 1
-		},
-		{
-			year: 1916,
-			unlocked: false,
-			contentNum: 0
-		},
-		{
-			year: 1917,
-			unlocked: false,
-			contentNum: 0
-		},
-		{
-			year: 1918,
-			unlocked: false,
-			contentNum:0
-		}
+			{
+				year: 1914,
+				unlocked: true,
+				contentNum: 2
+			},
+			{
+				year: 1915,
+				unlocked: false,
+				contentNum: 1
+			},
+			{
+				year: 1916,
+				unlocked: false,
+				contentNum: 0
+			},
+			{
+				year: 1917,
+				unlocked: false,
+				contentNum: 0
+			},
+			{
+				year: 1918,
+				unlocked: false,
+				contentNum: 0
+			}
 		];
-		
+
 		let events = [
-		{ 
-		text: 'August 4th - Australian Prime MinisterAndrew Fisher: "Australia will support Great Britain to the last man and the last shilling"', 
-		date: '04/08/1914'
-		},
-		{ 
-		text: 'August 5th - German Steamer SS Pfalz surrenders after being fired on by Fort Nepean,south of Melbourne, Australia.', 
-		date: '05/08/1914'
-		},
-		{ 
-		text: '10th Aug - Germans living in Australia declared ‘enemy aliens’ and required to report to their nearest police station.', 
-		date: '10/08/1914'
-		},
-		{ 
-		text: 'Sep 17th - The Australian Naval and Military Expeditionary Force takes possession of German New Guinea at Toma.', 
-		date: '17/09/1914'
-		},
-		{ 
-		text: 'Dec 3rd - Australian troops arrive in Egypt and set up camp at Mena, near Cairo.', 
-		date: '03/12/1914'
-		},		
-		{ 
-		text: '8th Feb - HMAS Australia, Sydney and Melbourne assist with the naval blockade of Germany in the North Sea.', 
-		date: '08/02/1915'
-		},
-		{ 
-		text: '25th Apr - Australian, New Zealand, British and French troops land at Gallipoli.', 
-		date: '25/04/1915'
-		},
-		{ 
-		text: '15th May - Major General William T Bridges, first commander of the AIF, is hit by a snipers bullet at Gallipoli and dies after three days.',
-		date: '15/05/1915'
-		},
-		{ 
-		text: '29th Aug - Anzacs abandon further Gallipoli offensives and a stalemate begins.',
-		date: '10/08/1915'
-		},		
-		{ 
-		text: '27th Oct - Billy Hughes becomes Prime Minister, replacing Andrew Fisher who resigns due to ill health and party divisions.',
-		date: '27/10/1915'
-		},
-		{ 
-		text: '18th Dec - 20,000 Allied troops are evacuated off Gallipoli where 8709 had died and 26,111 were wounded.', 
-		date: '18/12/1915'
-		}
+			{
+				text: 'August 4th - Australian Prime MinisterAndrew Fisher: "Australia will support Great Britain to the last man and the last shilling"',
+				date: '04/08/1914'
+			},
+			{
+				text: 'August 5th - German Steamer SS Pfalz surrenders after being fired on by Fort Nepean,south of Melbourne, Australia.',
+				date: '05/08/1914'
+			},
+			{
+				text: '10th Aug - Germans living in Australia declared ‘enemy aliens’ and required to report to their nearest police station.',
+				date: '10/08/1914'
+			},
+			{
+				text: 'Sep 17th - The Australian Naval and Military Expeditionary Force takes possession of German New Guinea at Toma.',
+				date: '17/09/1914'
+			},
+			{
+				text: 'Dec 3rd - Australian troops arrive in Egypt and set up camp at Mena, near Cairo.',
+				date: '03/12/1914'
+			},
+			{
+				text: '8th Feb - HMAS Australia, Sydney and Melbourne assist with the naval blockade of Germany in the North Sea.',
+				date: '08/02/1915'
+			},
+			{
+				text: '25th Apr - Australian, New Zealand, British and French troops land at Gallipoli.',
+				date: '25/04/1915'
+			},
+			{
+				text: '15th May - Major General William T Bridges, first commander of the AIF, is hit by a snipers bullet at Gallipoli and dies after three days.',
+				date: '15/05/1915'
+			},
+			{
+				text: '29th Aug - Anzacs abandon further Gallipoli offensives and a stalemate begins.',
+				date: '10/08/1915'
+			},
+			{
+				text: '27th Oct - Billy Hughes becomes Prime Minister, replacing Andrew Fisher who resigns due to ill health and party divisions.',
+				date: '27/10/1915'
+			},
+			{
+				text: '18th Dec - 20,000 Allied troops are evacuated off Gallipoli where 8709 had died and 26,111 were wounded.',
+				date: '18/12/1915'
+			}
 		];
-		
+
 		let telegrams = [
-		{ 
-		text: '28th Jun, Archduke Franz Ferdinand of the Austro-Hungarian Empire assassinated in Sarajevo."', 
-		date: '28th/06/1914'
-		},
-		{ 
-		text: '1st Aug, Germany declares war on Russia. France mobilises its military forces.', 
-		date: '01/08/1914'
-		},
-		{ 
-		text: '4st Aug, Great Britain declares war on Germany!', 
-		date: '04/08/1914'
-		},
-		{ 
-		text: 'Aug 23rd, German troops invade Poland. In one month, the world erupts in war!', 
-		date: '23/08/1914'
-		},
-		{ 
-		text: '23rd Sep, Allied forces join the Western Front.', 
-		date: '23/9/1914'
-		},		
-		{ 
-		text: '5th Nov, Great Britain and France declare war on Turkey.', 
-		date: '05/11/1914'
-		},
-		{ 
-		text: '3rd Feb, Turkish forces occupy the Sinai.', 
-		date: '03/02/1915'
-		},
-		{ 
-		text: '7th May, German submarine the U20 sinks the Lusitania off the Irish coast, killing 1198 passengers and crew including 128 Americans.',
-		date: '07/05/1915'
-		},
-		{ 
-		text: '29th Aug, Anzacs abandon further Gallipoli offensives and a stalemate begins.',
-		date: '29/08/1915'
-		},		
-		{ 
-		text: '11th Oct, Germans execute British nurse Edith Cavell, inspiring increased Allied war and recruitment efforts.',
-		date: '11/10/1915'
-		},
-		{ 
-		text: '7th Dec, British troops evacuate Gallipoli.', 
-		date: '07/12/1915'
-		}
+			{
+				text: '28th Jun, Archduke Franz Ferdinand of the Austro-Hungarian Empire assassinated in Sarajevo."',
+				date: '28th/06/1914'
+			},
+			{
+				text: '1st Aug, Germany declares war on Russia. France mobilises its military forces.',
+				date: '01/08/1914'
+			},
+			{
+				text: '4st Aug, Great Britain declares war on Germany!',
+				date: '04/08/1914'
+			},
+			{
+				text: 'Aug 23rd, German troops invade Poland. In one month, the world erupts in war!',
+				date: '23/08/1914'
+			},
+			{
+				text: '23rd Sep, Allied forces join the Western Front.',
+				date: '23/9/1914'
+			},
+			{
+				text: '5th Nov, Great Britain and France declare war on Turkey.',
+				date: '05/11/1914'
+			},
+			{
+				text: '3rd Feb, Turkish forces occupy the Sinai.',
+				date: '03/02/1915'
+			},
+			{
+				text: '7th May, German submarine the U20 sinks the Lusitania off the Irish coast, killing 1198 passengers and crew including 128 Americans.',
+				date: '07/05/1915'
+			},
+			{
+				text: '29th Aug, Anzacs abandon further Gallipoli offensives and a stalemate begins.',
+				date: '29/08/1915'
+			},
+			{
+				text: '11th Oct, Germans execute British nurse Edith Cavell, inspiring increased Allied war and recruitment efforts.',
+				date: '11/10/1915'
+			},
+			{
+				text: '7th Dec, British troops evacuate Gallipoli.',
+				date: '07/12/1915'
+			}
 		];
-		
+
 
 		let content = [
 			{
@@ -339,7 +339,7 @@
 				title: "war declared",
 				transcript: "Photograph of the Auchterlonie brothers of Gympie (1914)",
 				unlocked: true
-			}, 
+			},
 			{
 				username: "kerry",
 				img: "images/letter.png.jpg",
@@ -375,7 +375,7 @@
 				title: "war declared",
 				transcript: "Assorted resources from the First World War",
 				unlocked: true
-			}, 	{
+			}, {
 				username: "Dave",
 				img: "images/event-dark.jpg",
 				type: "events",
@@ -401,7 +401,7 @@
 				title: "war declared",
 				transcript: "Photograph of the Auchterlonie brothers of Gympie (1914)",
 				unlocked: true
-			}, 
+			},
 			{
 				username: "kerry",
 				img: "images/letter.png.jpg",
@@ -625,161 +625,161 @@
 				unlocked: true
 			}
 		]
-		
-	var data = {
-		resource_id: "cf6e12d8-bd8d-4232-9843-7fa3195cee1c",
-		limit: 25000
-	}
 
-	$.ajax({
-		url: "http://data.gov.au/api/action/datastore_search",
-		data: data,
-		dataType: "jsonp", // We use "jsonp" to ensure AJAX works correctly locally (otherwise XSS).
-		cache: true,
-		success: function(data) {
-			iterateRecords(data);
+		var data = {
+			resource_id: "cf6e12d8-bd8d-4232-9843-7fa3195cee1c",
+			limit: 25000
 		}
-	});
 
-	function iterateRecords(data) {
-	$.each(data.result.records, function(recordKey, recordValue) {
-		var index =0;
-		var recordTitle = recordValue["Full name (from National Archives of Australia)"];
-		var recordMilitary = recordValue["Military Details"];
-		var recordImage = recordValue["Medium resolution image"];
-		if(recordTitle && recordMilitary && recordImage) {
-			soldiers[index++] = recordImage;
+		$.ajax({
+			url: "http://data.gov.au/api/action/datastore_search",
+			data: data,
+			dataType: "jsonp", // We use "jsonp" to ensure AJAX works correctly locally (otherwise XSS).
+			cache: true,
+			success: function (data) {
+				iterateRecords(data);
+			}
+		});
 
+		function iterateRecords(data) {
+			$.each(data.result.records, function (recordKey, recordValue) {
+				var index = 0;
+				var recordTitle = recordValue["Full name (from National Archives of Australia)"];
+				var recordMilitary = recordValue["Military Details"];
+				var recordImage = recordValue["Medium resolution image"];
+				if (recordTitle && recordMilitary && recordImage) {
+					soldiers[index++] = recordImage;
+
+				}
+			});
 		}
-	});
-}
 
-function shuffle(array) {
-  var currentIndex = array.length, temporaryValue, randomIndex;
+		function shuffle(array) {
+			var currentIndex = array.length, temporaryValue, randomIndex;
 
-  // While there remain elements to shuffle...
-  while (0 !== currentIndex) {
+			// While there remain elements to shuffle...
+			while (0 !== currentIndex) {
 
-    // Pick a remaining element...
-    randomIndex = Math.floor(Math.random() * currentIndex);
-    currentIndex -= 1;
+				// Pick a remaining element...
+				randomIndex = Math.floor(Math.random() * currentIndex);
+				currentIndex -= 1;
 
-    // And swap it with the current element.
-    temporaryValue = array[currentIndex];
-    array[currentIndex] = array[randomIndex];
-    array[randomIndex] = temporaryValue;
-  }
+				// And swap it with the current element.
+				temporaryValue = array[currentIndex];
+				array[currentIndex] = array[randomIndex];
+				array[randomIndex] = temporaryValue;
+			}
 
-  return array;
-}
+			return array;
+		}
 
 		function init() {
-			let temp = unlockedColNum;		
+			let temp = unlockedColNum;
 			let day, month, year;
-			content = content.sort(function(a, b) {
+			content = content.sort(function (a, b) {
 				day = a.date.substring(0, 2);
 				month = a.date.substring(3, 5);
 				year = a.date.substring(6);
 				a = new Date(year, month, day);
-				
+
 				day = b.date.substring(0, 2);
 				month = b.date.substring(3, 5);
 				year = b.date.substring(6);
 				b = new Date(year, month, day);
-				
-				if (b > a){
+
+				if (b > a) {
 					return -1;
-				} else if (b < a){
+				} else if (b < a) {
 					return 1;
 				} else {
 					return 0;
 				}
-			});		
-			
+			});
+
 			let newContent = [];
 
-			for (var i = 0; i < content.length; i++){
-				if (content[i].date.substring(6) == contentYear){
+			for (var i = 0; i < content.length; i++) {
+				if (content[i].date.substring(6) == contentYear) {
 					newContent.push(content[i]);
 				}
 			}
-	
+
 			$("#timelineItems").empty();
 			$("#scrubber").empty();
 			$("#tele").empty();
-			
-			let teleWidth =30;
-			
+
+			let teleWidth = 30;
+
 			$.each(telegrams, function (index, value) {
-				if (value.date.substring(6) == contentYear){
-					$("#tele").append('<div class="float depth25 telegram" style="left:' + teleWidth+'%; top: 100%;">'+value.text+  '</div>');
-					teleWidth +=15;
+				if (value.date.substring(6) == contentYear) {
+					$("#tele").append('<div class="float depth25 telegram" style="left:' + teleWidth + '%; top: 100%;">' + value.text + '</div>');
+					teleWidth += 15;
 				}
 			});
-			
-		
+
+
 
 			let widthPercent = 23;
 			let heightPercent;
 			let color = "";
 			let colNum = 0;
-			let boxHeight = 100/filters.length;
-			let boxWidth = 100 /(newContent.length/(filters.length+(7-filters.length)));
-			let count =0;
-			
+			let boxHeight = 100 / filters.length;
+			let boxWidth = 100 / (newContent.length / (filters.length + (7 - filters.length)));
+			let count = 0;
+
 			$.each(newContent, function (index, value) {
-			let contentNumber = $('#'+ contentYear).attr('contentNumUnlocked');
-			let start =0;
-			if (contentYear == 1914){
-				start = 0;
-			} else if (contentYear == 1915){
-			
-				start = 21;
-			} else if (contentYear == 1916){
-				start = 35;
-			} else if (contentYear == 1917){
-				start = 35;
-			}else if (contentYear == 1918){
-				start = 35;
-			}
-			
-			if (contentNumber >= colNum){
-				if (index % (filters.length  + (7-filters.length)) ==0) {
-					colNum++;
-					$("#scrubber").append('<div id="sc' + colNum + '" class="scrubberCol"  style=" width:'+ boxWidth + '%">');				
+				let contentNumber = $('#' + contentYear).attr('contentNumUnlocked');
+				let start = 0;
+				if (contentYear == 1914) {
+					start = 0;
+				} else if (contentYear == 1915) {
+
+					start = 21;
+				} else if (contentYear == 1916) {
+					start = 35;
+				} else if (contentYear == 1917) {
+					start = 35;
+				} else if (contentYear == 1918) {
+					start = 35;
 				}
-					
-				if (value.type == 'events') {
-					color = "blue";
-				} else if (value.type == 'letters') {
-					color = "yellow";
-				} else if (value.type == 'propaganda') {
-					color = "red";
-				} else if (value.type == 'other') {
-					color = "grey";
-				} else if (value.type == 'newspapers') {
-					color = "white";
-				} else if (value.type == 'stories') {
-					color = "black";
-				} else if (value.type == 'photos') {
-					color = "green";
+
+				if (contentNumber >= colNum) {
+					if (index % (filters.length + (7 - filters.length)) == 0) {
+						colNum++;
+						$("#scrubber").append('<div id="sc' + colNum + '" class="scrubberCol"  style=" width:' + boxWidth + '%">');
+					}
+
+					if (value.type == 'events') {
+						color = "#F44336";
+					} else if (value.type == 'letters') {
+						color = "#3F51B5";
+					} else if (value.type == 'propaganda') {
+						color = "#5AB963";
+					} else if (value.type == 'other') {
+						color = "#FFC107";
+					} else if (value.type == 'newspapers') {
+						color = "#673AB7";
+					} else if (value.type == 'stories') {
+						color = "#E91E63";
+					} else if (value.type == 'photos') {
+						color = "#CDDC39";
+					}
+
+					if ($.inArray(value.type, filters) != -1) {
+
+						if (count % 2 == 0) {
+							heightPercent = 52;
+						} else {
+							heightPercent = 10;
+						}
+						count++
+						let n = index + start;
+						$('#sc' + colNum).append('<a href="#' + n + '"><div class="box" style="background-color:' + color + '; height:' + boxHeight + 'px; width:' + 100 + '%"></div></a>');
+
+						addToList(n, value, widthPercent, heightPercent);
+						widthPercent += 2.5;
+					}
 				}
-				
-				if ($.inArray(value.type, filters) != -1) {
-					
-				if (count % 2 == 0) {
-					heightPercent = 52;
-				} else {
-					heightPercent = 10;
-				}
-				count++
-				let n = index+start;
-				$('#sc' + colNum).append('<a href="#'+ n +'"><div class="box" style="background-color:' + color + '; height:'+ boxHeight +'px; width:'+ 100 + '%"></div></a>');
-					
-				addToList(n, value, widthPercent, heightPercent);
-				widthPercent += 2.5;
-				}
-			}
 			});
 
 			$(".timeline__content").click(function () {
@@ -795,11 +795,11 @@ function shuffle(array) {
 						mHeader.append("'" + content[index].title + " " + content[index].unlocked + "' <br>transcribed by " + content[index].username);
 						$('#modalImage').append('<img width=400px src="' + content[this.id.substring(1)].img + '">');
 						mTranscript.append('<textarea id="ta" rows="4" cols="50"></textarea><button id="edit">Edit</button>');
-						$("#ta").val(content[index].transcript);			
+						$("#ta").val(content[index].transcript);
 						$("#ta").attr("readonly", true);
 						$("#ta").css('background-color', 'lightgrey');
 						$("#edit").click(function () {
-							if ($("#edit").text()=="submit") {
+							if ($("#edit").text() == "submit") {
 								content[index].transcript = $('#ta').val();
 								toggleModal();
 								init();
@@ -810,7 +810,7 @@ function shuffle(array) {
 								$("#edit").text('submit');
 								init();
 							}
-						});		
+						});
 					}
 				} else {
 					mHeader.append("Transcribe document");
@@ -818,25 +818,25 @@ function shuffle(array) {
 					mTranscript.append('<textarea id="ta" rows="4" cols="50"></textarea><button id="submit">Submit</button>');
 					$("#submit").click(function () {
 						let obj = { username: "Karen", img: "./images/newspaper.png", type: "newspaper", date: "2/10/1916", title: $("#ha").val(), transcript: $("#ta").val() };
-						var num = $('#'+ contentYear).attr('contentNumUnlocked');
+						var num = $('#' + contentYear).attr('contentNumUnlocked');
 						var idNum = contentYear;
 						idNum++;
 						num++;
-					
-						if (num  > $('#'+ contentYear).attr('contentNum')){
-							$('#'+ idNum).attr('unlocked', true);
-							$('#'+ idNum).attr('contentNumUnlocked', 1);
+
+						if (num > $('#' + contentYear).attr('contentNum')) {
+							$('#' + idNum).attr('unlocked', true);
+							$('#' + idNum).attr('contentNumUnlocked', 1);
 						} else {
-							$('#'+ contentYear).attr('contentNumUnlocked', num);
+							$('#' + contentYear).attr('contentNumUnlocked', num);
 						}
-						
+
 						content.push(obj);
 						unlockedColNum++;
 						content[index].transcript = $('#ta').val();
 						content[index].unlocked = true;
 						toggleModal();
 						init();
-						});
+					});
 				}
 				modal.css("position", "sticky");
 			});
@@ -852,19 +852,19 @@ function shuffle(array) {
 
 		function addToList(index, value, width, height) {
 			let t = "<span>" + value.type + "</span>";
-			let span = "<span>'" + value.title+"'</span><span>Transcribed by " + value.username + "</span><span>" + value.date + "</span>";
-			
-			if (value.unlocked == true){
+			let span = "<span>'" + value.title + "'</span><span>Transcribed by " + value.username + "</span><span>" + value.date + "</span>";
+
+			if (value.unlocked == true) {
 				$("#timelineItems").append("<div id='I" + index + "' class='float depth10 timeline__content' style='left: " + width + "%; top: " + height +
-				"%; background-image: url(" + value.img + ")'><a name='"+index +"'></a></div>");
+					"%; background-image: url(" + value.img + ")'><a name='" + index + "'></a></div>");
 				$("#I" + index).append(t);
 				$("#I" + index).append(span);
 			} else {
 				$("#timelineItems").append("<div id='I" + index + "' class='float depth10 timeline__content' style='left: " + width + "%; top: " + height +
-				"%;'><a name='"+index +"'></a></div>");
+					"%;'><a name='" + index + "'></a></div>");
 				$("#I" + index).append("<span></span><span></span></span><span>???</span>");
 			}
-			
+
 		}
 
 		$("#addStory").click(function () {
@@ -872,7 +872,7 @@ function shuffle(array) {
 			mHeader.append("Add story");
 			$('#modalImage').append('<p>Soldier search<input type="text"></p><p>Private John Anthony Hopkins</p><img width=100px src="./images/family.png">');
 			mTranscript.append('<textarea id="ta" rows="4" cols="50"></textarea><button id="submit">Submit</button>');
-			
+
 			$("#submit").click(function () {
 				let obj = { username: "Karen", img: "./images/family.png", type: "story", date: "2/10/1916", title: "story", transcript: $("#ta").val() };
 				content.push(obj);
@@ -894,32 +894,30 @@ function shuffle(array) {
 			}
 			buttonsShow = !buttonsShow;
 		});
-		
-		$('.check').click(function() {
+
+		$('.check').click(function () {
 			let i = filters.indexOf(this.id);
 
-			if($.inArray(this.id, filters) != -1){
+			if ($.inArray(this.id, filters) != -1) {
 				filters.splice(i, 1);
 			} else {
 				filters.push(this.id);
-			}			
+			}
 			init();
-        });
-		
-		$('.year').click(function() {		
-			if ($('#'+ this.id).attr("unlocked")=='true' && $('#'+ this.id).attr("contentNum")!=0){
+		});
+
+		$('.year').click(function () {
+			if ($('#' + this.id).attr("unlocked") == 'true' && $('#' + this.id).attr("contentNum") != 0) {
 				unlockedColNum = 1;
 				contentYear = this.id;
 				$("#yearText").text(contentYear);
 				init();
 			}
-        });
-		
+		});
+
 		closeButton.click(toggleModal);
-		
+
 	</script>
 </body>
 
 </html>
-
-    

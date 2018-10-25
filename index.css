@@ -17,7 +17,7 @@ body {
   overflow-x: scroll;
   font-family: oldnewspapertypes;
   font-size: 72px;
-  background-image: url("images/wars.jpg");
+  background-image: url("images/background-war.png");
 }
 
 /* Fonts */
@@ -58,6 +58,9 @@ h4 {
     font-size: .5em;
 }
 
+#yearText {
+    color: white;
+}
 
 
 /* Menu */
@@ -171,9 +174,18 @@ a:hover {
     width: 55px;
     font-size: 30px;
     right: 20px;
-    background-color: maroon;
+    background-color: #88001b;
     color: white;
     cursor: pointer;
+}
+
+.circle-button-buttons {
+border: 1px solid;
+background:#88001b;
+padding: 25px;
+color: white; 
+transition: 0.6s;
+text-align: center;
 }
 
 button:focus {
@@ -215,11 +227,6 @@ button:focus {
     transform: translate(-50%, -50%);    
 }
 
-
-
-
-
-
 .timeline {
   position: relative;
   left: 0;
@@ -233,16 +240,12 @@ button:focus {
   background-size: 100% / cover;
 }
 
-
-
-
 .float {
   position: absolute;
   display: inline-block;
   transform-style: inherit;
   
 }
-
 
 .depth1 {
   transform: translateZ(1px);
@@ -281,16 +284,16 @@ span {
 }*/
 
 .timeline__content {
-	width: 250px;
-	height: 250px;
+	width: 200px;
+	height: 200px;
     background-color: grey;
-    border-radius: 150px;
+    border-radius: 10px;
 }
 
 
 .timeline__content span {
     padding-top: 20px;
-    padding-bottom: 20px;
+    padding-bottom: 5px;
     margin-left: auto;
     margin-right: auto;
     text-align: center;
@@ -304,7 +307,11 @@ span {
 
 }
 
-
+/*
+.events-content {
+    border: 2px solid green;
+}
+*/
 
 
 /* Telegram Animations */
@@ -312,7 +319,7 @@ span {
 
 .telegram {
   font-family: oldnewspapertypes;
-  font-size: .3em;  
+  font-size: 16px;  
   color: white;  
   overflow: hidden;
   white-space: nowrap; 
@@ -377,11 +384,13 @@ span {
         position: absolute;
         top: 50%;
         left: 50%;
+        width: 1000px;
         transform: translate(-50%, -50%);
         background-color: white;
         margin-top: 0px;
         border-radius: 0.5rem;
-		font-size: 20px;
+        font-size: 20px;
+        padding: 20px 20px 0px 20px;
     }
     #modalText {
         height: 100%;
@@ -390,12 +399,31 @@ span {
         flex-direction: column;
         margin: 30px;
     }
+
+    #edit {
+        border: 1px solid;
+        background:#88001b;
+        padding: 25px;
+        color: white; 
+        transition: 0.6s;
+        text-align: center;
+        float: right;
+    }
+
+    /*
     #modalContainer {
         display: flex;
         align-items: center;
         min-width: 1000px;
         padding: 20px;
+    }*/
+
+    #modalTranscript {
+    float: right;
+    align-content: center;
+    flex-direction: column;
     }
+
     .close-button {
         float: right;
         width: 1.5rem;
@@ -406,7 +434,9 @@ span {
         background-color: lightgray;
     }
     .close-button:hover {
-        background-color: darkgray;
+        background-color: maroon;
+        color: white;
+        transition: .3s;
     }
     .show-modal {
         opacity: 1;
@@ -441,6 +471,7 @@ span {
 		
 	}
 
+    /* Checkbox code from zFunx on Codepen */
     input[type=checkbox] + label {
         display: block;
         margin: 0.2em;
@@ -494,7 +525,7 @@ span {
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-image: url("images/intro-war.jpg");
+    background-image: url("images/background-war.png");
     font-size: 18px!important;
     font-family: 'Roboto'!important;
 }
@@ -527,9 +558,9 @@ span {
 
 .intro-btn {
     border: 1px solid;
-    background: white;
+    background:#88001b;
     padding: 25px;
-    color: #88001b; 
+    color: white; 
     transition: 0.6s;
     text-align: center;
 }
