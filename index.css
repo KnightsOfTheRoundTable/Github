@@ -410,6 +410,16 @@ span {
         float: right;
     }
 
+    #submit {
+        border: 1px solid;
+        background:#88001b;
+        padding: 25px;
+        color: white; 
+        transition: 0.6s;
+        text-align: center;
+        float: right;
+    }
+
     /*
     #modalContainer {
         display: flex;
