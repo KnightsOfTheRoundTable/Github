@@ -563,6 +563,7 @@ span {
     color: white; 
     transition: 0.6s;
     text-align: center;
+    margin-top: 25px;
 }
 
 .intro-h1 {
@@ -571,6 +572,7 @@ span {
     font-size: 50px;
     text-align: center;
     margin: 0;
+    margin-top: 50px;
 }
 
 
@@ -585,5 +587,6 @@ span {
 .intro-p {
     color: white;
     font-family: 'Roboto';
+    padding-bottom: 50px;
 }
 
