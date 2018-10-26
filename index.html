@@ -150,7 +150,7 @@
 	<script src="timeline/js/timeline.min.js"></script>
 	<script type="text/javascript">
 
-
+	//initialise variables
 		var buttonsShow = false;
 		var modal = $(".modal");
 		var mHeader = $("#modalHeader");
@@ -159,7 +159,7 @@
 		var contentYear = "1914";
 		var unlockedColNum = 1;
 		let editClicked = false;
-
+		var propaganda = []
 		var soldiers = [];
 
 		$("#intro-btn").click(function (e) {
@@ -170,8 +170,8 @@
 		});
 
 
-		var propaganda = []
-
+		
+		//get list of propaganda image ids
 		for (var i = 0; i < 43; i++) {
 			propaganda[i] = "a" + i;
 		}
@@ -313,7 +313,8 @@
 		];
 
 		let content;
-
+		
+		//load the content
 		function load() {
 			content = [
 				{
@@ -630,51 +631,65 @@
 			]
 		}
 
+		//data api information
 		var data = {
 			resource_id: "cf6e12d8-bd8d-4232-9843-7fa3195cee1c",
 			limit: 5000
 		}
+		
+		//link to the api with ajax proceed to load and initialise the content
 		$.ajax({
 			url: "http://data.gov.au/api/action/datastore_search",
 			data: data,
-			dataType: "jsonp", // We use "jsonp" to ensure AJAX works correctly locally (otherwise XSS).
+			dataType: "jsonp", 
 			cache: true,
 			success: function (data) {
-				iterateRecords(data);
+				//get the solier data from the state library of queensland api
+				getSoldierData(data);
+				//randomise the data order
 				propaganda = shuffle(propaganda);
 				soldiers = shuffle(soldiers);
 				load();
 				init();
 			}
 		});
-		function iterateRecords(data) {
+		
+		//obtain records from the soldier portrait api
+		function getSoldierData(data) {
 			var index = 0;
 			$.each(data.result.records, function (recordKey, recordValue) {
-				var recordTitle = recordValue["Full name (from National Archives of Australia)"];
-				var recordMilitary = recordValue["Military Details"];
-				var recordImage = recordValue["Medium resolution image"];
-				if (recordTitle && recordMilitary && recordImage) {
-					soldiers[index++] = { image: recordImage, name: recordTitle };
+				var name = recordValue["Full name (from National Archives of Australia)"];
+				var battalion = recordValue["Military Details"];
+				var img = recordValue["Medium resolution image"];
+				if (name && battalion && img) {
+					soldiers[index++] = { image: img, name: name };
 				}
 			});
 		}
+		
+		//fisher yates random shuffle algorithm
+		
+	//fisher yates random shuffle algorithm
 		function shuffle(array) {
-			var currentIndex = array.length, temporaryValue, randomIndex;
-			// While there remain elements to shuffle...
-			while (0 !== currentIndex) {
-				// Pick a remaining element...
-				randomIndex = Math.floor(Math.random() * currentIndex);
-				currentIndex -= 1;
-				// And swap it with the current element.
-				temporaryValue = array[currentIndex];
-				array[currentIndex] = array[randomIndex];
-				array[randomIndex] = temporaryValue;
+			var index = array.length, temp, randomIndex;
+
+			while (0 !== index) {
+				randomIndex = Math.floor(Math.random()* index);
+				index -= 1;
+				temp = array[index];
+				array[index] = array[randomIndex];
+				array[randomIndex] = temp;
 			}
 			return array;
 		}
+		
+		//initialise the data, essentially render the information to the screen
 		function init() {
+			//initialise data
 			let temp = unlockedColNum;
 			let day, month, year;
+			let newContent = [];
+			//sort the content by date
 			content = content.sort(function (a, b) {
 				day = a.date.substring(0, 2);
 				month = a.date.substring(3, 5);
@@ -695,19 +710,22 @@
 				}
 			});
 
-			let newContent = [];
+			
+			//create a subarray for content by filtering for current year
 			for (var i = 0; i < content.length; i++) {
 				if (content[i].date.substring(6) == contentYear) {
 					newContent.push(content[i]);
 				}
 			}
-
+			
+			//clear the information from the screen
 			$("#timelineItems").empty();
 			$("#scrubber").empty();
 			$("#tele").empty();
 
 			let teleWidth = 20;
 
+			//render the telegrams to the screen
 			$.each(telegrams, function (index, value) {
 				if (value.date.substring(6) == contentYear) {
 					$("#tele").append('<div class="float depth25 telegram" style="left:' + teleWidth + '%; top: 100%;">' + value.text + '</div>');
@@ -716,21 +734,30 @@
 			});
 
 
+			//initialise width and height for determining placement of the timeline data
 			let widthPercent = 23;
 			let heightPercent;
+			
+			//color is used for changing scrubber box color
 			let color = "";
 			let colNum = 0;
-			let boxHeight = 100 / filters.length;
-			let boxWidth = 100 / (newContent.length / (filters.length + (7 - filters.length)));
-			let count = 0;
-
+			
+			//calculate size of the scrubber boxes
+			let boxHeight = 100/filters.length;
+			let boxWidth = 100 /(newContent.length/(filters.length+(7-filters.length)));
+			let count =0;
+			
+			//render the scrubbing bar and timeline content
 			$.each(newContent, function (index, value) {
+			
+				//number of unlocked content to display				
 				let contentNumber = $('#' + contentYear).attr('contentNumUnlocked');
+				
+				//Change the start period for id's
 				let start = 0;
 				if (contentYear == 1914) {
 					start = 0;
 				} else if (contentYear == 1915) {
-
 					start = 21;
 				} else if (contentYear == 1916) {
 					start = 35;
@@ -740,12 +767,15 @@
 					start = 35;
 				}
 
+				//if the unlocked content is less then the number of columns, proceed. This allows gradual unlocking, rather then displaying all data
 				if (contentNumber >= colNum) {
+					//Create a scrubber bar if there are more data elements then there are selected filters
 					if (index % (filters.length + (7 - filters.length)) == 0) {
 						colNum++;
 						$("#scrubber").append('<div id="sc' + colNum + '" class="scrubberCol"  style=" width:' + boxWidth + '%">');
 					}
 
+					//change color value depending on data category
 					if (value.type == 'events') {
 						color = "#F44336";
 					} else if (value.type == 'letters') {
@@ -762,8 +792,9 @@
 						color = "#CDDC39";
 					}
 
+					//if the elements type is a valid filter, add it to the timeline 
 					if ($.inArray(value.type, filters) != -1) {
-
+						//alternate between top and bottom elements
 						if (count % 2 == 0) {
 							heightPercent = 52;
 						} else {
@@ -778,16 +809,23 @@
 					}
 				}
 			});
+			
+			//if timeline conetent is click perform the appopriate action
 			$(".timeline__content").click(function () {
+				//retieve the index from the elements id
 				let index = this.id.substring(1);
+				
+				//activate the modal form
 				toggleModal();
-				if (content[index].unlocked == true) {
+				
+				//if content is unlocked display standard display modal, otherwise create a unlocking modal with a submit button. 
+				//Once submitted, more information can be displayed on the timeline.
+				if (content[index].unlocked == true) {				
 					if (content[index].type == "soldiers") {
 						mHeader.append("'" + content[index].title + "' <br>transcribed by " + content[index].username);
 						$('#modalImage').append('<img width=400px src="' + content[this.id.substring(1)].img + '">');
 						mTranscript.append('<p>' + content[index].transcript + '</p>');
 					} else {
-
 						mHeader.append("'" + content[index].title + "' <br>transcribed by " + content[index].username);
 						$('#modalImage').append('<img width=400px src="' + content[this.id.substring(1)].img + '">');
 						mTranscript.append('<textarea id="ta" rows="12" cols="50"></textarea><button id="edit">Edit</button>');
@@ -809,28 +847,29 @@
 						});
 					}
 				} else {
-
 					mHeader.append("Transcribe document");
 					$('#modalImage').append('<img width=400px src="' + content[this.id.substring(1)].img + '">');
 					mTranscript.append('<textarea id="ta" rows="12" cols="50"></textarea><button id="submit">Submit</button>');
+					//if submit button is clicked, unlock more content for the selected year
 					$("#submit").click(function () {
-						let obj = { username: "Karen", img: "./images/newspaper.png", type: "newspaper", date: "2/10/1916", title: $("#ha").val(), transcript: $("#ta").val() };
 						var num = $('#' + contentYear).attr('contentNumUnlocked');
 						var idNum = contentYear;
 						idNum++;
 						num++;
-
+							
+						//if all content is unlocked for a given year, unlock the next year
 						if (num > $('#' + contentYear).attr('contentNum')) {
 							$('#' + idNum).attr('unlocked', true);
 							$('#' + idNum).attr('contentNumUnlocked', 1);
 						} else {
 							$('#' + contentYear).attr('contentNumUnlocked', num);
 						}
-
-						content.push(obj);
+						
 						unlockedColNum++;
 						content[index].transcript = $('#ta').val();
 						content[index].unlocked = true;
+						
+						//close modal and rerender the content
 						toggleModal();
 						init();
 					});
@@ -838,6 +877,8 @@
 				modal.css("position", "sticky");
 			});
 		}
+		
+		//turn modals on and off
 		function toggleModal() {
 			modal.css("position", "fixed");
 			modal.toggleClass("show-modal");
@@ -845,10 +886,13 @@
 			$('#modalImage').empty();
 			$('#modalTranscript').empty();
 		}
+		
+		//add new data to the timeline
 		function addToList(index, value, width, height) {
 			let t = "<span>" + value.type + "</span>";
 			let span = "<span>'" + value.title + "'</span><span>Transcribed by " + value.username + "</span><span>" + value.date + "</span>";
 
+			//if unlocked is true display normal image background, otherwise display a plain grey background
 			if (value.unlocked == true) {
 				$("#timelineItems").append("<div id='I" + index + "' class='float depth10 timeline__content' style='left: " + width + "%; top: " + height +
 					"%; background-image: url(" + value.img + ")'><a name='" + index + "'></a></div>");
@@ -861,30 +905,8 @@
 			}
 
 		}
-		$("#addStory").click(function () {
-			toggleModal();
-			mHeader.append("Add story");
-			$('#modalImage').append('<p>Soldier search<input type="text"></p><p>Private John Anthony Hopkins</p><img width=100px src="./images/family.png">');
-			mTranscript.append('<textarea id="ta" rows="4" cols="50"></textarea><button id="submit">Submit</button>');
-
-			$("#submit").click(function () {
-				let obj = { username: "Karen", img: "./images/family.png", type: "story", date: "2/10/1916", title: "story", transcript: $("#ta").val() };
-				content.push(obj);
-				toggleModal();
-				init();
-			});
-		});
-
-		$("#circle-button").click(function () {
-			var buttons = $("#buttons");
-			if (buttonsShow == true) {
-				buttons.css('display', 'none');
-			} else {
-				buttons.css('display', 'block');
-			}
-			buttonsShow = !buttonsShow;
-		});
-
+		
+		//controls the filtering
 		$('.check').click(function () {
 			let i = filters.indexOf(this.id);
 			if ($.inArray(this.id, filters) != -1) {
@@ -894,7 +916,8 @@
 			}
 			init();
 		});
-
+		
+		//If the year contains data and is unlocked, allow access.
 		$('.year').click(function () {
 			if ($('#' + this.id).attr("unlocked") == 'true' && $('#' + this.id).attr("contentNum") != 0) {
 				unlockedColNum = 1;
@@ -908,5 +931,4 @@
 
 	</script>
 </body>
-
 </html>
